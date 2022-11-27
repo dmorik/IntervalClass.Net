@@ -28,8 +28,8 @@ namespace IntervalClass.Testing.Create
         public void PositiveInfinity_Number_Success()
         {
             var number = GenerateDoubleNumber();
-            var error = ShouldCatchException<IntervalClassException>(() =>
-                new Interval(double.PositiveInfinity, number));
+            var error = ShouldCatchException<IntervalClassException>(()
+                => new Interval(double.PositiveInfinity, number));
 
             Assert.IsTrue(error);
         }
@@ -38,8 +38,8 @@ namespace IntervalClass.Testing.Create
         [Repeat(RepeatCount)]
         public void PositiveInfinity_NaN_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(() =>
-                new Interval(double.PositiveInfinity, double.NaN));
+            var error = ShouldCatchException<IntervalClassException>(() 
+                => new Interval(double.PositiveInfinity, double.NaN));
 
             Assert.IsTrue(error);
         }
@@ -48,8 +48,8 @@ namespace IntervalClass.Testing.Create
         [Repeat(RepeatCount)]
         public void PositiveInfinity_NegativeInfinity_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(() =>
-                new Interval(double.PositiveInfinity, double.NegativeInfinity));
+            var error = ShouldCatchException<IntervalClassException>(() 
+                => new Interval(double.PositiveInfinity, double.NegativeInfinity));
 
             Assert.IsTrue(error);
         }

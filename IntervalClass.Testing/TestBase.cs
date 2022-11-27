@@ -1,4 +1,7 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.ComponentModel;
+using System.Linq;
 
 namespace IntervalClass.Testing
 {
@@ -23,6 +26,26 @@ namespace IntervalClass.Testing
         protected static double GenerateDoubleNumber()
         {
             return GenerateNumberByLogInterval(MinDoubleLogValue, MaxDoubleLogValue);
+        }
+        
+        protected static double[] GenerateDoubleNumbers(int count)
+        {
+            if (count <= 0)
+                throw new ArgumentOutOfRangeException(nameof(count));
+
+            var result = new List<double>();
+
+            foreach (var number in Enumerable.Range(0, count))
+            {
+                var candidate = GenerateDoubleNumber();
+                
+                if (result.Contains(candidate))
+                    continue;
+                
+                result.Add(candidate);
+            }
+
+            return result.ToArray();
         }
         
         protected static bool ShouldCatchException<T>(Action action)

@@ -45,8 +45,8 @@ namespace IntervalClass.Testing.Create
         [Repeat(RepeatCount)]
         public void NegativeInfinity_NaN_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(() =>
-                new Interval(double.NegativeInfinity, double.NaN));
+            var error = ShouldCatchException<IntervalClassException>(() 
+                => new Interval(double.NegativeInfinity, double.NaN));
 
             Assert.IsTrue(error);
         }

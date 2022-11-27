@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
 
 // ReSharper disable ObjectCreationAsStatement
 // ReSharper disable CompareOfFloatsByEqualityOperator
@@ -22,35 +23,23 @@ namespace IntervalClass.Testing.Create
         [Repeat(RepeatCount)]
         public void Number_Number_Ordered_Success()
         {
-            var firstNumber = GenerateDoubleNumber();
-            var secondNumber = GenerateDoubleNumber();
-            var createdInterval = firstNumber <= secondNumber
-                ? new Interval(firstNumber, secondNumber)
-                : new Interval(secondNumber, firstNumber);
+            var numbers = GenerateDoubleNumbers(2);
+            var orderedNumber = numbers.OrderBy(x => x).ToArray();
+            var createdInterval = new Interval(orderedNumber[0], orderedNumber[1]);
 
             Assert.IsTrue(!createdInterval.IsEmpty);
         }
 
         [Test]
         [Repeat(RepeatCount)]
-        public void Number_Number_Unordered_Failure()
+        public void Number_Number_ReverseOrdered_Failure()
         {
-            var firstNumber = GenerateDoubleNumber();
-            var secondNumber = GenerateDoubleNumber();
-
-            while (secondNumber == firstNumber)
-            {
-                secondNumber = GenerateDoubleNumber();
-            }
-
-            var error = ShouldCatchException<IntervalClassException>(() =>
-            {
-                if (firstNumber <= secondNumber)
-                    new Interval(secondNumber, firstNumber);
-                else
-                    new Interval(firstNumber, secondNumber);
-            });
-
+            var numbers = GenerateDoubleNumbers(2);
+            var reverseOrderedNumbers = numbers.OrderByDescending(x => x).ToArray();
+            
+            var error = ShouldCatchException<IntervalClassException>(() 
+                => new Interval(reverseOrderedNumbers[0], reverseOrderedNumbers[1]));
+            
             Assert.IsTrue(error);
         }
 
@@ -80,8 +69,8 @@ namespace IntervalClass.Testing.Create
         public void Number_NegativeInfinity_Failure()
         {
             var number = GenerateDoubleNumber();
-            var error = ShouldCatchException<IntervalClassException>(() =>
-                new Interval(number, double.NegativeInfinity));
+            var error = ShouldCatchException<IntervalClassException>(() 
+                => new Interval(number, double.NegativeInfinity));
 
             Assert.IsTrue(error);
         }

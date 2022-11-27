@@ -10,7 +10,8 @@ namespace IntervalClass.Testing.Create
         [Test]
         public void NaN_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(() => new Interval(double.NaN));
+            var error = ShouldCatchException<IntervalClassException>(() 
+                => new Interval(double.NaN));
 
             Assert.IsTrue(error);
         }

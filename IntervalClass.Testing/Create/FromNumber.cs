@@ -1,65 +1,16 @@
-﻿using System;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-// ReSharper disable CompareOfFloatsByEqualityOperator
-// ReSharper disable EqualExpressionComparison
 // ReSharper disable ObjectCreationAsStatement
+// ReSharper disable CompareOfFloatsByEqualityOperator
 
-namespace IntervalClass.Testing
+namespace IntervalClass.Testing.Create
 {
     [TestFixture]
-    internal sealed class BaseTest : TestBase
+    internal sealed class FromNumber : TestBase
     {
-        private static bool ShouldCatchException<T>(Action action)
-            where T : Exception
-        {
-            try
-            {
-                action();
-            }
-            catch (T)
-            {
-                return true;
-            }
-
-            return false;
-        }
-
-        [Test]
-        public void Create_Empty()
-        {
-            var createdInterval = new Interval();
-
-            Assert.IsTrue(createdInterval.IsEmpty);
-        }
-
-        [Test]
-        public void Create_NaN()
-        {
-            var error = ShouldCatchException<IntervalClassException>(() => new Interval(double.NaN));
-
-            Assert.IsTrue(error);
-        }
-        
-        [Test]
-        public void Create_PositiveInfinity()
-        {
-            var createdInterval = new Interval(double.PositiveInfinity);
-
-            Assert.IsTrue(!createdInterval.IsEmpty);
-        }
-        
-        [Test]
-        public void Create_NegativeInfinity()
-        {
-            var createdInterval = new Interval(double.NegativeInfinity);
-
-            Assert.IsTrue(!createdInterval.IsEmpty);
-        }
-
         [Test]
         [Repeat(RepeatCount)]
-        public void Create_Number()
+        public void Number_Success()
         {
             var number = GenerateDoubleNumber();
             var createdInterval = new Interval(number);
@@ -69,7 +20,7 @@ namespace IntervalClass.Testing
 
         [Test]
         [Repeat(RepeatCount)]
-        public void Create_Number_Number_Ordered()
+        public void Number_Number_Ordered_Success()
         {
             var firstNumber = GenerateDoubleNumber();
             var secondNumber = GenerateDoubleNumber();
@@ -82,7 +33,7 @@ namespace IntervalClass.Testing
 
         [Test]
         [Repeat(RepeatCount)]
-        public void Create_Number_Number_Unordered()
+        public void Number_Number_Unordered_Failure()
         {
             var firstNumber = GenerateDoubleNumber();
             var secondNumber = GenerateDoubleNumber();
@@ -105,7 +56,7 @@ namespace IntervalClass.Testing
 
         [Test]
         [Repeat(RepeatCount)]
-        public void Create_Number_NaN()
+        public void Number_NaN_Failure()
         {
             var number = GenerateDoubleNumber();
             var error = ShouldCatchException<IntervalClassException>(()
@@ -113,14 +64,24 @@ namespace IntervalClass.Testing
 
             Assert.IsTrue(error);
         }
-
+        
         [Test]
         [Repeat(RepeatCount)]
-        public void Create_NaN_Number()
+        public void Number_PositiveInfinity_Success()
         {
             var number = GenerateDoubleNumber();
-            var error = ShouldCatchException<IntervalClassException>(()
-                => new Interval(double.NaN, number));
+            var createdInterval = new Interval(number, double.PositiveInfinity);
+
+            Assert.IsTrue(!createdInterval.IsEmpty);
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Number_NegativeInfinity_Failure()
+        {
+            var number = GenerateDoubleNumber();
+            var error = ShouldCatchException<IntervalClassException>(() =>
+                new Interval(number, double.NegativeInfinity));
 
             Assert.IsTrue(error);
         }

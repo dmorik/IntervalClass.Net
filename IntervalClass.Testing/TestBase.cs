@@ -24,5 +24,20 @@ namespace IntervalClass.Testing
         {
             return GenerateNumberByLogInterval(MinDoubleLogValue, MaxDoubleLogValue);
         }
+        
+        protected static bool ShouldCatchException<T>(Action action)
+            where T : Exception
+        {
+            try
+            {
+                action();
+            }
+            catch (T)
+            {
+                return true;
+            }
+
+            return false;
+        }
     }
 }

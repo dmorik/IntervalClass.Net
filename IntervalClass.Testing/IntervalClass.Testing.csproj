@@ -49,7 +49,11 @@
     <Reference Include="System.Core" />
   </ItemGroup>
   <ItemGroup>
-    <Compile Include="BaseTest.cs" />
+    <Compile Include="Create\FromNegativeInfinity.cs" />
+    <Compile Include="Create\FromEmpty.cs" />
+    <Compile Include="Create\FromNaN.cs" />
+    <Compile Include="Create\FromNumber.cs" />
+    <Compile Include="Create\FromPositiveInfinity.cs" />
     <Compile Include="EqualityTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBase.cs" />

@@ -2,6 +2,7 @@
 {
     public readonly partial struct Interval
     {
+        /// <inheritdoc/>
         public override bool Equals(object obj)
         {
             if (!(obj is Interval anotherInterval))
@@ -17,6 +18,7 @@
                 && UpperBound.Equals(anotherInterval.UpperBound);
         }
 
+        /// <inheritdoc/>
         public override int GetHashCode()
         {
             if (IsEmpty)
@@ -24,17 +26,20 @@
             
             return LowerBound.GetHashCode() & UpperBound.GetHashCode();
         }
-        
+
+        /// <inheritdoc/>
         public static bool operator ==(Interval firstInterval, Interval secondInterval)
         {
             return firstInterval.Equals(secondInterval);
         }
-        
+
+        /// <inheritdoc/>
         public static bool operator !=(Interval firstInterval, Interval secondInterval)
         {
             return !(firstInterval == secondInterval);
         }
-        
+
+        /// <inheritdoc/>
         public static bool operator ==(Interval interval, double number)
         {
             if (interval.IsEmpty)
@@ -43,17 +48,20 @@
             return interval.LowerBound.Equals(number)
                 && interval.UpperBound.Equals(number);
         }
-        
+
+        /// <inheritdoc/>
         public static bool operator !=(Interval interval, double number)
         {
             return !(interval == number);
         }
-        
+
+        /// <inheritdoc/>
         public static bool operator ==(double number, Interval interval)
         {
             return interval == number;
         }
-        
+
+        /// <inheritdoc/>
         public static bool operator !=(double number, Interval interval)
         {
             return !(interval == number);

@@ -1,5 +1,8 @@
 ﻿namespace IntervalClass
 {
+    /// <summary>
+    /// Implements the interval class.
+    /// </summary>
     public readonly partial struct Interval
     {
         /// <summary>

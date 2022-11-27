@@ -50,5 +50,10 @@
         public Interval(double number)
             : this(number, number)
         { }
+        
+        public static explicit operator Interval(double number)
+        {
+            return new Interval(number);
+        }
     }
 }

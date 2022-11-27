@@ -13,6 +13,9 @@
         
         private bool IsNotEmpty { get; }
 
+        /// <summary>
+        /// Indicates that interval is empty.
+        /// </summary>
         public bool IsEmpty => !IsNotEmpty;
 
         /// <summary>

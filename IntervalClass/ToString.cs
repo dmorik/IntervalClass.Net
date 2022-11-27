@@ -76,6 +76,10 @@ namespace IntervalClass
             return stringBuilder.ToString();
         }
 
+        /// <summary>
+        /// Returns the string representation of the interval.
+        /// </summary>
+        /// <returns></returns>
         public override string ToString()
         {
             return ToString(DefaultDigitsAfterPoint);

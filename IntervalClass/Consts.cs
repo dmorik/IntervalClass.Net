@@ -5,10 +5,18 @@ namespace IntervalClass
 {
     public readonly partial struct Interval
     {
+        /// <summary>
+        /// Interval from the negative infinity to the positive infinity.
+        /// </summary>
         public static Interval Infinity { get; } = new Interval(double.NegativeInfinity, double.PositiveInfinity);
+        /// <summary>
+        /// Interval from the negative infinity to the zero.
+        /// </summary>
         public static Interval NegativeInfinity { get; } = new Interval(double.NegativeInfinity, 0.0);
+        /// <summary>
+        /// Interval from the zero to the positive infinity.
+        /// </summary>
         public static Interval PositiveInfinity { get; } = new Interval(0.0, double.PositiveInfinity);
-
         /// <summary>
         /// Empty interval.
         /// </summary>

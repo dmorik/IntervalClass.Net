@@ -6,7 +6,7 @@ namespace IntervalClass
     public readonly partial struct Interval
     {
         /// <summary>
-        /// Returns sum of two intervals.
+        /// Calculates the result of an addition operation between two intervals.
         /// </summary>
         /// <param name="firstInterval">First interval.</param>
         /// <param name="secondInterval">Second interval.</param>
@@ -39,6 +39,12 @@ namespace IntervalClass
             return new Interval(-interval.UpperBound, -interval.LowerBound);
         }
 
+        /// <summary>
+        /// Calculates the result of a subtraction operation between two intervals.
+        /// </summary>
+        /// <param name="firstInterval">The first interval.</param>
+        /// <param name="secondInterval">The second interval.</param>
+        /// <returns>The result of a subtraction.</returns>
         public static Interval operator -(Interval firstInterval, Interval secondInterval)
         {
             var lowerBound = Previous.Double(firstInterval.LowerBound - secondInterval.UpperBound);

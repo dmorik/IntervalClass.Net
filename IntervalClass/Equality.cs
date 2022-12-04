@@ -26,20 +26,17 @@
             
             return LowerBound.GetHashCode() & UpperBound.GetHashCode();
         }
-
-        /// <inheritdoc/>
+        
         public static bool operator ==(Interval firstInterval, Interval secondInterval)
         {
             return firstInterval.Equals(secondInterval);
         }
 
-        /// <inheritdoc/>
         public static bool operator !=(Interval firstInterval, Interval secondInterval)
         {
             return !(firstInterval == secondInterval);
         }
 
-        /// <inheritdoc/>
         public static bool operator ==(Interval interval, double number)
         {
             if (interval.IsEmpty)
@@ -49,19 +46,16 @@
                 && interval.UpperBound.Equals(number);
         }
 
-        /// <inheritdoc/>
         public static bool operator !=(Interval interval, double number)
         {
             return !(interval == number);
         }
 
-        /// <inheritdoc/>
         public static bool operator ==(double number, Interval interval)
         {
             return interval == number;
         }
 
-        /// <inheritdoc/>
         public static bool operator !=(double number, Interval interval)
         {
             return !(interval == number);

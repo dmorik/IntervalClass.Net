@@ -57,6 +57,11 @@
             : this(number, number)
         { }
         
+        /// <summary>
+        /// Represents the double number as the interval.
+        /// </summary>
+        /// <param name="number">The double number.</param>
+        /// <returns>The interval whose boundaries are equal to the number.</returns>
         public static explicit operator Interval(double number)
         {
             return new Interval(number);

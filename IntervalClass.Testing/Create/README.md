@@ -12,7 +12,7 @@ Creating intervals with only one argument:
 |`-Inf`|`IntervalClassException`|
 |`<number>`|`[<number>, <number>]`|
 
-Creating intervals by two arguments (`number1 < number2`):
+Creating intervals by two arguments (`<number1> < <number2>`):
 |Argument 1|Argument 2|Result|
 |:-:|:-:|:-:|
 |`NaN`|`NaN`|`IntervalClassException`|

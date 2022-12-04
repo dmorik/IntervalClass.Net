@@ -15,17 +15,14 @@
         public double UpperBound { get; }
         
         private bool IsNotEmpty { get; }
-
-        /// <summary>
-        /// Indicates that interval is empty.
-        /// </summary>
         private bool IsEmpty => !IsNotEmpty;
 
         /// <summary>
         /// Create interval by two numbers.
         /// </summary>
-        /// <param name="lowerBound">Lower bound number.</param>
-        /// <param name="upperBound">Upper bound number.</param>
+        /// <param name="lowerBound">Lower bound of the interval.</param>
+        /// <param name="upperBound">Upper bound of the interval.</param>
+        /// <returns>The interval with specified lower and upper bounds.</returns>
         public Interval(double lowerBound, double upperBound)
         {
             if (double.IsNaN(lowerBound))

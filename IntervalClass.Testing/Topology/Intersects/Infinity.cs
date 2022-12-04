@@ -17,9 +17,9 @@ namespace IntervalClass.Testing.Topology.Intersects
         [Test]
         public void Infinity_Empty()
         {
-            var intersection = Interval.Infinity.Intersect(Interval.Infinity);
+            var intersection = Interval.Infinity.Intersect(Interval.Empty);
             
-            Assert.IsTrue(intersection == Interval.Infinity);
+            Assert.IsTrue(intersection == Interval.Empty);
         }
         
         [Test]

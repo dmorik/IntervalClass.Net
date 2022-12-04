@@ -11,7 +11,7 @@ namespace IntervalClass.Testing.Topology.Intersects
         {
             var intersection = Interval.Empty.Intersect(Interval.Empty);
             
-            Assert.IsTrue(intersection.IsEmpty);
+            Assert.IsTrue(intersection == Interval.Empty);
         }
         
         [Test]
@@ -19,11 +19,7 @@ namespace IntervalClass.Testing.Topology.Intersects
         {
             var intersection = Interval.Empty.Intersect(Interval.Infinity);
             
-            Assert.IsTrue(intersection.IsEmpty);
-            
-            intersection = Interval.Infinity.Intersect(Interval.Empty);
-            
-            Assert.IsTrue(intersection.IsEmpty);
+            Assert.IsTrue(intersection == Interval.Empty);
         }
         
         [Test]
@@ -37,7 +33,7 @@ namespace IntervalClass.Testing.Topology.Intersects
             var interval = new Interval(orderedNumbers[0], orderedNumbers[1]);
             var intersection = Interval.Empty.Intersect(interval);
             
-            Assert.IsTrue(intersection.IsEmpty);
+            Assert.IsTrue(intersection == Interval.Empty);
         }
     }
 }

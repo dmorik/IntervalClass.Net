@@ -19,7 +19,7 @@
         /// <summary>
         /// Indicates that interval is empty.
         /// </summary>
-        public bool IsEmpty => !IsNotEmpty;
+        private bool IsEmpty => !IsNotEmpty;
 
         /// <summary>
         /// Create interval by two numbers.

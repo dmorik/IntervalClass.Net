@@ -62,6 +62,11 @@ namespace IntervalClass
             return new Interval(leftBound, rightBound);
         }
 
+        /// <summary>
+        /// Indicates that the interval contains specified number.
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public bool Contains(double number)
         {
             if (IsEmpty)
@@ -70,6 +75,11 @@ namespace IntervalClass
             return LowerBound <= number && UpperBound >= number;
         }
 
+        /// <summary>
+        /// Indicates that the interval contains specified interval.
+        /// </summary>
+        /// <param name="number"></param>
+        /// <returns></returns>
         public bool Contains(Interval interval)
         {
             if (IsEmpty)

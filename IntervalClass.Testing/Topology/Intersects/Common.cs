@@ -28,7 +28,7 @@ namespace IntervalClass.Testing.Topology.Intersects
         
         [Test]
         [Repeat(RepeatCount)]
-        public void Common_NotIntersectsCommon()
+        public void Common_NotIntersectingCommon()
         {
             var orderedNumbers = GenerateDoubleNumbers(4)
                 .OrderBy(x => x)
@@ -39,16 +39,16 @@ namespace IntervalClass.Testing.Topology.Intersects
 
             var intersection = firstInterval.Intersect(secondInterval);
             
-            Assert.IsTrue(intersection.IsEmpty);
+            Assert.IsTrue(intersection == Interval.Empty);
             
             intersection = secondInterval.Intersect(firstInterval);
             
-            Assert.IsTrue(intersection.IsEmpty);
+            Assert.IsTrue(intersection == Interval.Empty);
         }
         
         [Test]
         [Repeat(RepeatCount)]
-        public void Common_ContainedCommon()
+        public void Common_ContainingCommon()
         {
             var orderedNumbers = GenerateDoubleNumbers(4)
                 .OrderBy(x => x)
@@ -81,7 +81,7 @@ namespace IntervalClass.Testing.Topology.Intersects
         
         [Test]
         [Repeat(RepeatCount)]
-        public void Common_IntersectedCommon()
+        public void Common_IntersectingCommon()
         {
             var orderedNumbers = GenerateDoubleNumbers(4)
                 .OrderBy(x => x)
@@ -110,7 +110,7 @@ namespace IntervalClass.Testing.Topology.Intersects
             var interval = new Interval(orderedNumbers[0], orderedNumbers[1]);
             var intersection = interval.Intersect(Interval.Empty);
             
-            Assert.IsTrue(intersection.IsEmpty);
+            Assert.IsTrue(intersection == Interval.Empty);
         }
         
         [Test]

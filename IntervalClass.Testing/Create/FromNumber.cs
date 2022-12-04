@@ -16,7 +16,7 @@ namespace IntervalClass.Testing.Create
             var number = GenerateDoubleNumber();
             var createdInterval = new Interval(number);
 
-            Assert.IsTrue(!createdInterval.IsEmpty);
+            Assert.IsTrue(createdInterval != Interval.Empty);
         }
 
         [Test]
@@ -27,7 +27,7 @@ namespace IntervalClass.Testing.Create
             var orderedNumber = numbers.OrderBy(x => x).ToArray();
             var createdInterval = new Interval(orderedNumber[0], orderedNumber[1]);
 
-            Assert.IsTrue(!createdInterval.IsEmpty);
+            Assert.IsTrue(createdInterval != Interval.Empty);
         }
 
         [Test]
@@ -62,7 +62,7 @@ namespace IntervalClass.Testing.Create
             var number = GenerateDoubleNumber();
             var createdInterval = new Interval(number, double.PositiveInfinity);
 
-            Assert.IsTrue(!createdInterval.IsEmpty);
+            Assert.IsTrue(createdInterval != Interval.Empty);
         }
         
         [Test]

@@ -10,7 +10,7 @@ namespace IntervalClass.Testing.Create
         {
             var createdInterval = new Interval();
 
-            Assert.IsTrue(createdInterval.IsEmpty);
+            Assert.IsTrue(createdInterval == Interval.Empty);
         }
     }
 }

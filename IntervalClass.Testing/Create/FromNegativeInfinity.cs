@@ -30,7 +30,7 @@ namespace IntervalClass.Testing.Create
         {
             var createdInterval = new Interval(double.NegativeInfinity, double.PositiveInfinity);
 
-            Assert.IsTrue(!createdInterval.IsEmpty);
+            Assert.IsTrue(createdInterval != Interval.Empty);
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace IntervalClass.Testing.Create
             var number = GenerateDoubleNumber();
             var createdInterval = new Interval(double.NegativeInfinity, number);
 
-            Assert.IsTrue(!createdInterval.IsEmpty);
+            Assert.IsTrue(createdInterval != Interval.Empty);
         }
         
         [Test]

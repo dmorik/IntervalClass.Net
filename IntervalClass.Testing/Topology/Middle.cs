@@ -43,7 +43,7 @@ namespace IntervalClass.Testing.Topology
         {
             var middle = Interval.Empty.Middle();
 
-            Assert.IsTrue(middle.IsEmpty);
+            Assert.IsTrue(middle == Interval.Empty);
         }
 
         [Test]

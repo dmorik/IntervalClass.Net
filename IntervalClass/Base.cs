@@ -29,13 +29,13 @@
         public Interval(double lowerBound, double upperBound)
         {
             if (double.IsNaN(lowerBound))
-                throw new IntervalClassException($"Left bound of interval is 'NaN'");
+                throw new IntervalClassException($"Lower bound of interval is 'NaN'");
 
             if (double.IsNaN(upperBound))
-                throw new IntervalClassException($"Right bound of interval is 'NaN'");
+                throw new IntervalClassException($"Upper bound of interval is 'NaN'");
 
             if (lowerBound > upperBound)
-                throw new IntervalClassException($"Left interval bound must be less or equal than right interval bound ({lowerBound}, {upperBound})");
+                throw new IntervalClassException($"Lower interval bound must be less or equal than upper interval bound ({lowerBound}, {upperBound})");
 
             if (double.IsNegativeInfinity(lowerBound) && double.IsNegativeInfinity(upperBound)
                 || double.IsPositiveInfinity(lowerBound) && double.IsPositiveInfinity(upperBound))

@@ -7,18 +7,18 @@ namespace IntervalClass
 {
     public readonly partial struct Interval
     {
-        public Interval Intersect(Interval otherInterval)
+        public Interval Intersect(Interval interval)
         {
-            if (IsEmpty || otherInterval.IsEmpty)
+            if (IsEmpty || interval.IsEmpty)
                 return Empty;
 
-            var leftIntersectionBound = Math.Max(LowerBound, otherInterval.LowerBound);
-            var rightIntersectionBound = Math.Min(UpperBound, otherInterval.UpperBound);
+            var lowerIntersectionBound = Math.Max(LowerBound, interval.LowerBound);
+            var upperIntersectionBound = Math.Min(UpperBound, interval.UpperBound);
 
-            if (leftIntersectionBound > rightIntersectionBound)
+            if (lowerIntersectionBound > upperIntersectionBound)
                 return Empty;
 
-            return new Interval(leftIntersectionBound, rightIntersectionBound);
+            return new Interval(lowerIntersectionBound, upperIntersectionBound);
         }
 
         /// <summary>
@@ -48,25 +48,25 @@ namespace IntervalClass
             return Math.Floor(UpperBound) >= Math.Ceiling(LowerBound);
         }
 
-        public Interval UnityWith(Interval otherInterval)
+        public Interval UnityWith(Interval interval)
         {
             if (IsEmpty)
-                return otherInterval;
+                return interval;
 
-            if (otherInterval.IsEmpty)
+            if (interval.IsEmpty)
                 return this;
 
-            var leftBound = Math.Min(LowerBound, otherInterval.LowerBound);
-            var rightBound = Math.Max(UpperBound, otherInterval.UpperBound);
+            var lowerBound = Math.Min(LowerBound, interval.LowerBound);
+            var upperBound = Math.Max(UpperBound, interval.UpperBound);
 
-            return new Interval(leftBound, rightBound);
+            return new Interval(lowerBound, upperBound);
         }
 
         /// <summary>
-        /// Indicates that the interval contains specified number.
+        /// Indicates that the interval contains the specified number.
         /// </summary>
-        /// <param name="number"></param>
-        /// <returns></returns>
+        /// <param name="number">The specified number.</param>
+        /// <returns>True if the interval contains the specified number, False - otherwise.</returns>
         public bool Contains(double number)
         {
             if (IsEmpty)
@@ -76,10 +76,10 @@ namespace IntervalClass
         }
 
         /// <summary>
-        /// Indicates that the interval contains specified interval.
+        /// Indicates that the interval contains the specified interval.
         /// </summary>
-        /// <param name="number"></param>
-        /// <returns></returns>
+        /// <param name="interval">The specified interval.</param>
+        /// <returns>True if the interval contains the specified interval, False - otherwise.</returns>
         public bool Contains(Interval interval)
         {
             if (IsEmpty)
@@ -91,50 +91,30 @@ namespace IntervalClass
             return Contains(interval.LowerBound) && Contains(interval.UpperBound);
         }
 
-        public Interval[] Except(Interval otherInterval)
+        public Interval[] Except(Interval interval)
         {
-            // thisInterval [--]
-            // otherInterval (--)
-            // (--)--[--]
-            if (!IsIntersects(otherInterval))
-            {
-                return new Interval[] { this };
-            }
+            var intersection = Intersect(interval);
 
-            if (otherInterval.LowerBound <= LowerBound)
-            {
-                // (--[
-                if (otherInterval.UpperBound >= UpperBound)
-                {
-                    // (--[---]--)
-                    return Array.Empty<Interval>();
-                }
-                else
-                {
-                    // (--[--)--]
-                    return new Interval[] { new Interval(otherInterval.UpperBound, this.UpperBound) };
-                }
-            }
-            else
-            {
-                // [--(
-                if (otherInterval.UpperBound > UpperBound)
-                {
-                    // [--(--]--)
-                    return new Interval[] { new Interval(this.LowerBound, otherInterval.LowerBound) };
-                }
-                else
-                {
-                    // [--(--)--]
-                    return new Interval[]
-                    {
-                        new Interval(this.LowerBound, otherInterval.LowerBound),
-                        new Interval(otherInterval.UpperBound, this.UpperBound)
-                    };
-                }
-            }
+            if (intersection.IsEmpty)
+                return new Interval[] { this };
+
+            var leftPart = new Interval(LowerBound, intersection.LowerBound);
+            var rightPart = new Interval(intersection.UpperBound, UpperBound);
+            var result = new List<Interval>();
+            
+            if (!leftPart.IsPoint())
+                result.Add(leftPart);
+            
+            if (!rightPart.IsPoint())
+                result.Add(rightPart);
+
+            return result.ToArray();
         }
 
+        /// <summary>
+        /// Returns the width of the interval.
+        /// </summary>
+        /// <returns>Width of the interval.</returns>
         public Interval Width()
         {
             if (IsEmpty)
@@ -146,6 +126,10 @@ namespace IntervalClass
             return (Interval)UpperBound - (Interval)LowerBound;
         }
 
+        /// <summary>
+        /// Returns the radius of the interval.
+        /// </summary>
+        /// <returns>The radius of the interval.</returns>
         public Interval Radius()
         {
             if (IsEmpty)
@@ -157,6 +141,11 @@ namespace IntervalClass
             return radius;
         }
 
+        /// <summary>
+        /// Returns the middle of the interval.
+        /// </summary>
+        /// <returns>The middle of the interval.</returns>
+        /// <exception cref="IntervalClassException"></exception>
         public Interval Middle()
         {
             if (IsEmpty)
@@ -197,11 +186,16 @@ namespace IntervalClass
                 : new Interval[] { leftPart };
         }
 
-        public bool IsIntersects(Interval otherInterval)
+        public bool IsIntersects(Interval interval)
         {
-            return !Intersect(otherInterval).IsEmpty;
+            return !Intersect(interval).IsEmpty;
         }
 
+        /// <summary>
+        /// Returns the magnitude of the interval.
+        /// </summary>
+        /// <returns>The magnitude of the interval.</returns>
+        /// <exception cref="IntervalClassException">When try to get the magnitude of the empty interval.</exception>
         public double Magnitude()
         {
             if (IsEmpty)
@@ -210,6 +204,11 @@ namespace IntervalClass
             return Math.Max(Math.Abs(LowerBound), Math.Abs(UpperBound));
         }
 
+        /// <summary>
+        /// Returns the mignitude of the interval.
+        /// </summary>
+        /// <returns></returns>
+        /// <exception cref="IntervalClassException">When try to get the mignitude of the empty interval.</exception>
         public double Mignitude()
         {
             if (IsEmpty)

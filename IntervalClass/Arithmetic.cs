@@ -13,10 +13,10 @@ namespace IntervalClass
         /// <returns>Sum of intervals.</returns>
         public static Interval operator +(Interval firstInterval, Interval secondInterval)
         {
-            var leftBound = Previous.Double(firstInterval.LowerBound + secondInterval.LowerBound);
-            var rightBound = Next.Double(firstInterval.UpperBound + secondInterval.UpperBound);
+            var lowerBound = Previous.Double(firstInterval.LowerBound + secondInterval.LowerBound);
+            var upperBound = Next.Double(firstInterval.UpperBound + secondInterval.UpperBound);
 
-            return new Interval(leftBound, rightBound);
+            return new Interval(lowerBound, upperBound);
         }
 
         /// <summary>
@@ -41,23 +41,23 @@ namespace IntervalClass
 
         public static Interval operator -(Interval firstInterval, Interval secondInterval)
         {
-            var leftBound = Previous.Double(firstInterval.LowerBound - secondInterval.UpperBound);
-            var rightBound = Next.Double(firstInterval.UpperBound - secondInterval.LowerBound);
+            var lowerBound = Previous.Double(firstInterval.LowerBound - secondInterval.UpperBound);
+            var upperBound = Next.Double(firstInterval.UpperBound - secondInterval.LowerBound);
 
-            return new Interval(leftBound, rightBound);
+            return new Interval(lowerBound, upperBound);
         }
 
         public static Interval operator *(Interval firstInterval, Interval secondInterval)
         {
-            var leftLeft = firstInterval.LowerBound * secondInterval.LowerBound;
-            var leftRight = firstInterval.LowerBound * secondInterval.UpperBound;
-            var rightLeft = firstInterval.UpperBound * secondInterval.LowerBound;
-            var rightRight = firstInterval.UpperBound * secondInterval.UpperBound;
+            var lowerLower = firstInterval.LowerBound * secondInterval.LowerBound;
+            var lowerUpper = firstInterval.LowerBound * secondInterval.UpperBound;
+            var upperLower = firstInterval.UpperBound * secondInterval.LowerBound;
+            var upperUpper = firstInterval.UpperBound * secondInterval.UpperBound;
 
-            var leftBound = Previous.Double(Math.Min(Math.Min(leftLeft, leftRight), Math.Min(rightLeft, rightRight)));
-            var rightBound = Next.Double(Math.Max(Math.Max(leftLeft, leftRight), Math.Max(rightLeft, rightRight)));
+            var lowerBound = Previous.Double(Math.Min(Math.Min(lowerLower, lowerUpper), Math.Min(upperLower, upperUpper)));
+            var upperBound = Next.Double(Math.Max(Math.Max(lowerLower, lowerUpper), Math.Max(upperLower, upperUpper)));
 
-            return new Interval(leftBound, rightBound);
+            return new Interval(lowerBound, upperBound);
         }
 
         public static Interval operator /(Interval firstInterval, Interval secondInterval)
@@ -65,15 +65,15 @@ namespace IntervalClass
             if (secondInterval.Contains(0.0))
                 throw new IntervalClassException($"Division by zero");
 
-            var leftLeft = firstInterval.LowerBound / secondInterval.LowerBound;
-            var leftRight = firstInterval.LowerBound / secondInterval.UpperBound;
-            var rightLeft = firstInterval.UpperBound / secondInterval.LowerBound;
-            var rightRight = firstInterval.UpperBound / secondInterval.UpperBound;
+            var lowerLower = firstInterval.LowerBound / secondInterval.LowerBound;
+            var lowerUpper = firstInterval.LowerBound / secondInterval.UpperBound;
+            var upperLower = firstInterval.UpperBound / secondInterval.LowerBound;
+            var upperUpper = firstInterval.UpperBound / secondInterval.UpperBound;
 
-            var leftBound = Previous.Double(Math.Min(Math.Min(leftLeft, leftRight), Math.Min(rightLeft, rightRight)));
-            var rightBound = Next.Double(Math.Max(Math.Max(leftLeft, leftRight), Math.Max(rightLeft, rightRight)));
+            var lowerBound = Previous.Double(Math.Min(Math.Min(lowerLower, lowerUpper), Math.Min(upperLower, upperUpper)));
+            var upperBound = Next.Double(Math.Max(Math.Max(lowerLower, lowerUpper), Math.Max(upperLower, upperUpper)));
 
-            return new Interval(leftBound, rightBound);
+            return new Interval(lowerBound, upperBound);
         }
     }
 }

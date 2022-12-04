@@ -10,7 +10,7 @@ namespace IntervalClass.Testing.Create
         [Test]
         public void NaN_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(() 
+            var error = ShouldCatchIntervalClassException(() 
                 => new Interval(double.NaN));
 
             Assert.IsTrue(error);
@@ -19,7 +19,7 @@ namespace IntervalClass.Testing.Create
         [Test]
         public void NaN_NaN_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(() 
+            var error = ShouldCatchIntervalClassException(() 
                 => new Interval(double.NaN, double.NaN));
 
             Assert.IsTrue(error);
@@ -30,7 +30,7 @@ namespace IntervalClass.Testing.Create
         public void NaN_Number_Failure()
         {
             var number = GenerateDoubleNumber();
-            var error = ShouldCatchException<IntervalClassException>(()
+            var error = ShouldCatchIntervalClassException(()
                 => new Interval(double.NaN, number));
 
             Assert.IsTrue(error);
@@ -40,7 +40,7 @@ namespace IntervalClass.Testing.Create
         [Repeat(RepeatCount)]
         public void NaN_NegativeInfinity_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(()
+            var error = ShouldCatchIntervalClassException(()
                 => new Interval(double.NaN, double.NegativeInfinity));
 
             Assert.IsTrue(error);
@@ -50,7 +50,7 @@ namespace IntervalClass.Testing.Create
         [Repeat(RepeatCount)]
         public void NaN_PositiveInfinity_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(()
+            var error = ShouldCatchIntervalClassException(()
                 => new Interval(double.NaN, double.PositiveInfinity));
 
             Assert.IsTrue(error);

@@ -8,19 +8,21 @@ namespace IntervalClass.Testing.Create
     internal sealed class FromPositiveInfinity : TestBase
     {
         [Test]
-        public void PositiveInfinity_Success()
+        public void PositiveInfinity_Failure()
         {
-            var createdInterval = new Interval(double.PositiveInfinity);
+            var error = ShouldCatchIntervalClassException(()
+                => new Interval(double.PositiveInfinity));
 
-            Assert.IsTrue(!createdInterval.IsEmpty);
+            Assert.IsTrue(error);
         }
         
         [Test]
-        public void PositiveInfinity_PositiveInfinity_Success()
+        public void PositiveInfinity_PositiveInfinity_Failure()
         {
-            var createdInterval = new Interval(double.PositiveInfinity);
+            var error = ShouldCatchIntervalClassException(()
+                => new Interval(double.PositiveInfinity));
 
-            Assert.IsTrue(!createdInterval.IsEmpty);
+            Assert.IsTrue(error);
         }
         
         [Test]
@@ -28,7 +30,7 @@ namespace IntervalClass.Testing.Create
         public void PositiveInfinity_Number_Success()
         {
             var number = GenerateDoubleNumber();
-            var error = ShouldCatchException<IntervalClassException>(()
+            var error = ShouldCatchIntervalClassException(()
                 => new Interval(double.PositiveInfinity, number));
 
             Assert.IsTrue(error);
@@ -38,7 +40,7 @@ namespace IntervalClass.Testing.Create
         [Repeat(RepeatCount)]
         public void PositiveInfinity_NaN_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(() 
+            var error = ShouldCatchIntervalClassException(() 
                 => new Interval(double.PositiveInfinity, double.NaN));
 
             Assert.IsTrue(error);
@@ -48,7 +50,7 @@ namespace IntervalClass.Testing.Create
         [Repeat(RepeatCount)]
         public void PositiveInfinity_NegativeInfinity_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(() 
+            var error = ShouldCatchIntervalClassException(() 
                 => new Interval(double.PositiveInfinity, double.NegativeInfinity));
 
             Assert.IsTrue(error);

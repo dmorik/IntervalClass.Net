@@ -4,11 +4,11 @@ using NUnit.Framework;
 namespace IntervalClass.Testing.Topology.Intersects
 {
     [TestFixture]
-    internal sealed class WithCommon : TestBase
+    internal sealed class Common : TestBase
     {
         [Test]
         [Repeat(RepeatCount)]
-        public void OneSharedPoint_Common()
+        public void Common_OneSharedPointCommon()
         {
             var orderedNumbers = GenerateDoubleNumbers(3)
                 .OrderBy(x => x)
@@ -28,7 +28,7 @@ namespace IntervalClass.Testing.Topology.Intersects
         
         [Test]
         [Repeat(RepeatCount)]
-        public void NotIntersects_Common()
+        public void Common_NotIntersectsCommon()
         {
             var orderedNumbers = GenerateDoubleNumbers(4)
                 .OrderBy(x => x)
@@ -48,7 +48,7 @@ namespace IntervalClass.Testing.Topology.Intersects
         
         [Test]
         [Repeat(RepeatCount)]
-        public void Contains_Common()
+        public void Common_ContainedCommon()
         {
             var orderedNumbers = GenerateDoubleNumbers(4)
                 .OrderBy(x => x)
@@ -68,7 +68,7 @@ namespace IntervalClass.Testing.Topology.Intersects
         
         [Test]
         [Repeat(RepeatCount)]
-        public void Same_Common()
+        public void Common_SameCommon()
         {
             var orderedNumbers = GenerateDoubleNumbers(2)
                 .OrderBy(x => x)
@@ -81,7 +81,7 @@ namespace IntervalClass.Testing.Topology.Intersects
         
         [Test]
         [Repeat(RepeatCount)]
-        public void Intersects_Common()
+        public void Common_IntersectedCommon()
         {
             var orderedNumbers = GenerateDoubleNumbers(4)
                 .OrderBy(x => x)
@@ -97,6 +97,34 @@ namespace IntervalClass.Testing.Topology.Intersects
             intersection = secondInterval.Intersect(firstInterval);
             
             Assert.IsTrue(intersection == shouldIntersection);
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Common_Empty()
+        {
+            var orderedNumbers = GenerateDoubleNumbers(2)
+                .OrderBy(x => x)
+                .ToArray();
+
+            var interval = new Interval(orderedNumbers[0], orderedNumbers[1]);
+            var intersection = interval.Intersect(Interval.Empty);
+            
+            Assert.IsTrue(intersection.IsEmpty);
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Common_Infinity()
+        {
+            var orderedNumbers = GenerateDoubleNumbers(2)
+                .OrderBy(x => x)
+                .ToArray();
+
+            var interval = new Interval(orderedNumbers[0], orderedNumbers[1]);
+            var intersection = interval.Intersect(Interval.Infinity);
+            
+            Assert.IsTrue(intersection == interval);
         }
     }
 }

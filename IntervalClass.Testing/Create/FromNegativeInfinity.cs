@@ -8,19 +8,21 @@ namespace IntervalClass.Testing.Create
     internal sealed class FromNegativeInfinity : TestBase
     {
         [Test]
-        public void NegativeInfinity_Success()
+        public void NegativeInfinity_Failure()
         {
-            var createdInterval = new Interval(double.NegativeInfinity);
+            var error = ShouldCatchIntervalClassException(()
+                => new Interval(double.NegativeInfinity));
 
-            Assert.IsTrue(!createdInterval.IsEmpty);
+            Assert.IsTrue(error);
         }
         
         [Test]
-        public void NegativeInfinity_NegativeInfinity_Success()
+        public void NegativeInfinity_NegativeInfinity_Failure()
         {
-            var createdInterval = new Interval(double.NegativeInfinity, double.NegativeInfinity);
+            var error = ShouldCatchIntervalClassException(()
+                => new Interval(double.NegativeInfinity, double.NegativeInfinity));
 
-            Assert.IsTrue(!createdInterval.IsEmpty);
+            Assert.IsTrue(error);
         }
         
         [Test]
@@ -45,7 +47,7 @@ namespace IntervalClass.Testing.Create
         [Repeat(RepeatCount)]
         public void NegativeInfinity_NaN_Failure()
         {
-            var error = ShouldCatchException<IntervalClassException>(() 
+            var error = ShouldCatchIntervalClassException(() 
                 => new Interval(double.NegativeInfinity, double.NaN));
 
             Assert.IsTrue(error);

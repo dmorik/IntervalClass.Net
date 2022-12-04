@@ -4,10 +4,18 @@ using NUnit.Framework;
 namespace IntervalClass.Testing.Topology.Intersects
 {
     [TestFixture]
-    internal sealed class WithInfinity : TestBase
+    internal sealed class Infinity : TestBase
     {
         [Test]
-        public void Infinity()
+        public void Infinity_Infinity()
+        {
+            var intersection = Interval.Infinity.Intersect(Interval.Infinity);
+            
+            Assert.IsTrue(intersection == Interval.Infinity);
+        }
+        
+        [Test]
+        public void Infinity_Empty()
         {
             var intersection = Interval.Infinity.Intersect(Interval.Infinity);
             
@@ -16,18 +24,14 @@ namespace IntervalClass.Testing.Topology.Intersects
         
         [Test]
         [Repeat(RepeatCount)]
-        public void Common()
+        public void Infinity_Common()
         {
             var orderedNumbers = GenerateDoubleNumbers(2)
                 .OrderBy(x => x)
                 .ToArray();
 
             var interval = new Interval(orderedNumbers[0], orderedNumbers[1]);
-            var intersection = interval.Intersect(Interval.Infinity);
-            
-            Assert.IsTrue(intersection == interval);
-            
-            intersection = Interval.Infinity.Intersect(interval);
+            var intersection = Interval.Infinity.Intersect(interval);
             
             Assert.IsTrue(intersection == interval);
         }

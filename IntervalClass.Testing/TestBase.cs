@@ -1,6 +1,5 @@
 ﻿using System;
 using System.Collections.Generic;
-using System.ComponentModel;
 using System.Linq;
 
 namespace IntervalClass.Testing
@@ -48,14 +47,13 @@ namespace IntervalClass.Testing
             return result.ToArray();
         }
         
-        protected static bool ShouldCatchException<T>(Action action)
-            where T : Exception
+        protected static bool ShouldCatchIntervalClassException(Action action)
         {
             try
             {
                 action();
             }
-            catch (T)
+            catch (IntervalClassException)
             {
                 return true;
             }

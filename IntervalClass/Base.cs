@@ -24,21 +24,27 @@
         /// <summary>
         /// Create interval by two numbers.
         /// </summary>
-        /// <param name="leftBound">Lower bound number.</param>
-        /// <param name="rightBound">Upper bound number.</param>
-        public Interval(double leftBound, double rightBound)
+        /// <param name="lowerBound">Lower bound number.</param>
+        /// <param name="upperBound">Upper bound number.</param>
+        public Interval(double lowerBound, double upperBound)
         {
-            if (double.IsNaN(leftBound))
+            if (double.IsNaN(lowerBound))
                 throw new IntervalClassException($"Left bound of interval is 'NaN'");
 
-            if (double.IsNaN(rightBound))
+            if (double.IsNaN(upperBound))
                 throw new IntervalClassException($"Right bound of interval is 'NaN'");
 
-            if (leftBound > rightBound)
-                throw new IntervalClassException($"Left interval bound must be less or equal than right interval bound ({leftBound}, {rightBound})");
+            if (lowerBound > upperBound)
+                throw new IntervalClassException($"Left interval bound must be less or equal than right interval bound ({lowerBound}, {upperBound})");
 
-            LowerBound = leftBound;
-            UpperBound = rightBound;
+            if (double.IsNegativeInfinity(lowerBound) && double.IsNegativeInfinity(upperBound)
+                || double.IsPositiveInfinity(lowerBound) && double.IsPositiveInfinity(upperBound))
+            {
+                throw new IntervalClassException($"todo error message");
+            }
+            
+            LowerBound = lowerBound;
+            UpperBound = upperBound;
             IsNotEmpty = true;
         }
         

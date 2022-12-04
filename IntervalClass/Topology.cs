@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
-using NextAfter.Net;
+
+// ReSharper disable CompareOfFloatsByEqualityOperator
 
 namespace IntervalClass
 {
@@ -20,6 +21,10 @@ namespace IntervalClass
             return new Interval(leftIntersectionBound, rightIntersectionBound);
         }
 
+        /// <summary>
+        /// Indicates that the interval is the point.
+        /// </summary>
+        /// <returns>True if the interval is the point, False - otherwise.</returns>
         public bool IsPoint()
         {
             if (IsEmpty)
@@ -28,11 +33,18 @@ namespace IntervalClass
             return LowerBound == UpperBound;
         }
         
+        /// <summary>
+        /// Indicates that the interval contains any integer number.
+        /// </summary>
+        /// <returns>True if the interval contains any integer number, False - otherwise.</returns>
         public bool ContainsAnyInteger()
         {
             if (IsEmpty)
                 return false;
 
+            if (double.IsInfinity(LowerBound) || double.IsInfinity(UpperBound))
+                return true;
+            
             return Math.Floor(UpperBound) >= Math.Ceiling(LowerBound);
         }
 
@@ -130,7 +142,7 @@ namespace IntervalClass
                 return Empty;
 
             var width = Width();
-            var radius = width / new Interval(2.0);
+            var radius = width / (Interval)2.0;
             
             return radius;
         }
@@ -139,6 +151,12 @@ namespace IntervalClass
         {
             if (IsEmpty)
                 return Empty;
+
+            if (this == Infinity)
+                return (Interval)0.0;
+
+            if (double.IsInfinity(LowerBound) || double.IsInfinity(UpperBound))
+                throw new IntervalClassException($"todo error exception message");
 
             var middle = ((Interval)LowerBound + (Interval)UpperBound) / (Interval)2.0;
             
@@ -177,7 +195,7 @@ namespace IntervalClass
         public double Magnitude()
         {
             if (IsEmpty)
-                return double.NaN;
+                throw new IntervalClassException($"Attempting to get magnitude of empty interval.");
 
             return Math.Max(Math.Abs(LowerBound), Math.Abs(UpperBound));
         }
@@ -185,7 +203,7 @@ namespace IntervalClass
         public double Mignitude()
         {
             if (IsEmpty)
-                return double.NaN;
+                throw new IntervalClassException($"Attempting to get mignitude of empty interval.");
 
             if (Contains(0.0))
                 return 0.0;

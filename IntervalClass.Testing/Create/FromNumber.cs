@@ -35,9 +35,10 @@ namespace IntervalClass.Testing.Create
         public void Number_Number_ReverseOrdered_Failure()
         {
             var numbers = GenerateDoubleNumbers(2);
-            var reverseOrderedNumbers = numbers.OrderByDescending(x => x).ToArray();
-            
-            var error = ShouldCatchException<IntervalClassException>(() 
+            var reverseOrderedNumbers = numbers
+                .OrderByDescending(x => x)
+                .ToArray();
+            var error = ShouldCatchIntervalClassException(() 
                 => new Interval(reverseOrderedNumbers[0], reverseOrderedNumbers[1]));
             
             Assert.IsTrue(error);
@@ -48,7 +49,7 @@ namespace IntervalClass.Testing.Create
         public void Number_NaN_Failure()
         {
             var number = GenerateDoubleNumber();
-            var error = ShouldCatchException<IntervalClassException>(()
+            var error = ShouldCatchIntervalClassException(()
                 => new Interval(number, double.NaN));
 
             Assert.IsTrue(error);
@@ -69,7 +70,7 @@ namespace IntervalClass.Testing.Create
         public void Number_NegativeInfinity_Failure()
         {
             var number = GenerateDoubleNumber();
-            var error = ShouldCatchException<IntervalClassException>(() 
+            var error = ShouldCatchIntervalClassException(() 
                 => new Interval(number, double.NegativeInfinity));
 
             Assert.IsTrue(error);

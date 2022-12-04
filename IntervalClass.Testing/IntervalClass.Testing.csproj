@@ -57,9 +57,15 @@
     <Compile Include="EqualityTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBase.cs" />
-    <Compile Include="Topology\Intersects\WithCommon.cs" />
-    <Compile Include="Topology\Intersects\WithEmpty.cs" />
-    <Compile Include="Topology\Intersects\WithInfinity.cs" />
+    <Compile Include="Topology\ContainsAnyInteger.cs" />
+    <Compile Include="Topology\ContainsInterval.cs" />
+    <Compile Include="Topology\ContainsNumber.cs" />
+    <Compile Include="Topology\Dichotomy.cs" />
+    <Compile Include="Topology\Intersects\Common.cs" />
+    <Compile Include="Topology\Intersects\Empty.cs" />
+    <Compile Include="Topology\Intersects\Infinity.cs" />
+    <Compile Include="Topology\IsPoint.cs" />
+    <Compile Include="Topology\Middle.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="packages.config" />

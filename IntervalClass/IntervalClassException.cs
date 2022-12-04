@@ -3,7 +3,7 @@
 namespace IntervalClass
 {
     /// <summary>
-    /// Represents interval class exceptions.
+    /// Represents interval class exception.
     /// </summary>
     public class IntervalClassException : Exception
     {

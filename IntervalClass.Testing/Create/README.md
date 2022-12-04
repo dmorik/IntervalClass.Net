@@ -4,6 +4,14 @@ The tests guarantee the following behavior:
 
 Creating intervals without arguments returns `Interval.Empty`.
 
+|Designation|meaning|
+|:-:|:-:|
+|`-Inf`|`double.NegativeInfinity`|
+|`+Inf`|`double.PositiveInfinity`|
+|`NaN`|`double.NaN`|
+|`<number>`|common number|
+|`<number1>, <number2>`|common numbers & `number1 < number2`|
+
 Creating intervals with only one argument:
 |Argument|Result|
 |:-:|:-:|

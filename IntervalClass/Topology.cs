@@ -115,10 +115,11 @@ namespace IntervalClass
         /// Returns the width of the interval.
         /// </summary>
         /// <returns>Width of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Width()
         {
             if (IsEmpty)
-                return Empty;
+                throw new IntervalClassException($"Argument is the empty interval");
 
             if (IsPoint())
                 return (Interval)0.0;
@@ -130,10 +131,11 @@ namespace IntervalClass
         /// Returns the radius of the interval.
         /// </summary>
         /// <returns>The radius of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Radius()
         {
             if (IsEmpty)
-                return Empty;
+                throw new IntervalClassException($"Argument is the empty interval");
 
             var width = Width();
             var radius = width / (Interval)2.0;
@@ -145,11 +147,11 @@ namespace IntervalClass
         /// Returns the middle of the interval.
         /// </summary>
         /// <returns>The middle of the interval.</returns>
-        /// <exception cref="IntervalClassException"></exception>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Middle()
         {
             if (IsEmpty)
-                return Empty;
+                throw new IntervalClassException($"Argument is the empty interval");
 
             if (this == Infinity)
                 return (Interval)0.0;
@@ -195,11 +197,11 @@ namespace IntervalClass
         /// Returns the magnitude of the interval.
         /// </summary>
         /// <returns>The magnitude of the interval.</returns>
-        /// <exception cref="IntervalClassException">When try to get the magnitude of the empty interval.</exception>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public double Magnitude()
         {
             if (IsEmpty)
-                throw new IntervalClassException($"Attempting to get magnitude of empty interval.");
+                throw new IntervalClassException($"Argument is the empty interval");
 
             return Math.Max(Math.Abs(LowerBound), Math.Abs(UpperBound));
         }
@@ -208,11 +210,11 @@ namespace IntervalClass
         /// Returns the mignitude of the interval.
         /// </summary>
         /// <returns></returns>
-        /// <exception cref="IntervalClassException">When try to get the mignitude of the empty interval.</exception>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public double Mignitude()
         {
             if (IsEmpty)
-                throw new IntervalClassException($"Attempting to get mignitude of empty interval.");
+                throw new IntervalClassException($"Argument is the empty interval");
 
             if (Contains(0.0))
                 return 0.0;

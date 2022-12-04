@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 
-namespace IntervalClass.Testing.Topology
+namespace IntervalClass.Testing.Topology.Middle
 {
     internal sealed class Middle : TestBase
     {
@@ -39,11 +39,12 @@ namespace IntervalClass.Testing.Topology
         }
         
         [Test]
-        public void Empty_Success()
+        public void Empty_Failure()
         {
-            var middle = Interval.Empty.Middle();
+            var error = ShouldCatchIntervalClassException(()
+                => Interval.Empty.Middle());
 
-            Assert.IsTrue(middle == Interval.Empty);
+            Assert.IsTrue(error);
         }
 
         [Test]

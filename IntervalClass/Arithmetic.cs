@@ -6,20 +6,6 @@ namespace IntervalClass
     public readonly partial struct Interval
     {
         /// <summary>
-        /// Calculates the result of an addition operation between two intervals.
-        /// </summary>
-        /// <param name="firstInterval">First interval.</param>
-        /// <param name="secondInterval">Second interval.</param>
-        /// <returns>Sum of intervals.</returns>
-        public static Interval operator +(Interval firstInterval, Interval secondInterval)
-        {
-            var lowerBound = Previous.Double(firstInterval.LowerBound + secondInterval.LowerBound);
-            var upperBound = Next.Double(firstInterval.UpperBound + secondInterval.UpperBound);
-
-            return new Interval(lowerBound, upperBound);
-        }
-
-        /// <summary>
         /// Returns the same interval (unary plus).
         /// </summary>
         /// <param name="interval"></param>
@@ -38,6 +24,20 @@ namespace IntervalClass
         {
             return new Interval(-interval.UpperBound, -interval.LowerBound);
         }
+        
+        /// <summary>
+        /// Calculates the result of an addition operation between two intervals.
+        /// </summary>
+        /// <param name="firstInterval">First interval.</param>
+        /// <param name="secondInterval">Second interval.</param>
+        /// <returns>Sum of intervals.</returns>
+        public static Interval operator +(Interval firstInterval, Interval secondInterval)
+        {
+            var lowerBound = Previous.Double(firstInterval.LowerBound + secondInterval.LowerBound);
+            var upperBound = Next.Double(firstInterval.UpperBound + secondInterval.UpperBound);
+
+            return new Interval(lowerBound, upperBound);
+        }
 
         /// <summary>
         /// Calculates the result of a subtraction operation between two intervals.
@@ -53,6 +53,12 @@ namespace IntervalClass
             return new Interval(lowerBound, upperBound);
         }
 
+        /// <summary>
+        /// Calculates the result of a multiplication operation between two intervals.
+        /// </summary>
+        /// <param name="firstInterval">The first interval.</param>
+        /// <param name="secondInterval">The second interval.</param>
+        /// <returns>The result of a multiplication.</returns>
         public static Interval operator *(Interval firstInterval, Interval secondInterval)
         {
             var lowerLower = firstInterval.LowerBound * secondInterval.LowerBound;
@@ -66,10 +72,16 @@ namespace IntervalClass
             return new Interval(lowerBound, upperBound);
         }
 
+        /// <summary>
+        /// Calculates the result of a division operation between two intervals.
+        /// </summary>
+        /// <param name="firstInterval">The first interval.</param>
+        /// <param name="secondInterval">The second interval.</param>
+        /// <returns>The result of a division.</returns>
         public static Interval operator /(Interval firstInterval, Interval secondInterval)
         {
             if (secondInterval.Contains(0.0))
-                throw new IntervalClassException($"Division by zero");
+                throw new IntervalClassException($"Division by an interval containing zero");
 
             var lowerLower = firstInterval.LowerBound / secondInterval.LowerBound;
             var lowerUpper = firstInterval.LowerBound / secondInterval.UpperBound;

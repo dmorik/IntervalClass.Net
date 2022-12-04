@@ -64,7 +64,7 @@
     <Compile Include="Topology\Intersects\Common.cs" />
     <Compile Include="Topology\Intersects\Empty.cs" />
     <Compile Include="Topology\Intersects\Infinity.cs" />
-    <Compile Include="Topology\IsPoint.cs" />
+    <Compile Include="Topology\IsPoint\IsPoint.cs" />
     <Compile Include="Topology\Middle.cs" />
   </ItemGroup>
   <ItemGroup>

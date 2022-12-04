@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 
-namespace IntervalClass.Testing.Topology
+namespace IntervalClass.Testing.Topology.IsPoint
 {
     internal sealed class IsPoint : TestBase
     {

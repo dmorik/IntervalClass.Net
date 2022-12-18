@@ -27,7 +27,7 @@ namespace IntervalClass.Testing.Create
         
         [Test]
         [Repeat(RepeatCount)]
-        public void PositiveInfinity_Number_Success()
+        public void PositiveInfinity_Number_Failure()
         {
             var number = GenerateDoubleNumber();
             var error = ShouldCatchIntervalClassException(()

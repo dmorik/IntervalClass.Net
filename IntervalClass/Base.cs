@@ -1,18 +1,25 @@
-﻿namespace IntervalClass
+﻿using System;
+
+namespace IntervalClass
 {
     /// <summary>
     /// Implements the interval class.
     /// </summary>
     public readonly partial struct Interval
     {
+        private double InternalLowerBound { get; }
         /// <summary>
         /// Lower bound of interval.
         /// </summary>
-        public double LowerBound { get; }
+        public double LowerBound 
+            => IsEmpty ? double.NaN : InternalLowerBound;
+
+        private double InternalUpperBound { get; }
         /// <summary>
         /// Upper bound of interval.
         /// </summary>
-        public double UpperBound { get; }
+        public double UpperBound 
+            => IsEmpty ? double.NaN : InternalUpperBound;
         
         private bool IsNotEmpty { get; }
         private bool IsEmpty => !IsNotEmpty;
@@ -20,28 +27,28 @@
         /// <summary>
         /// Create interval by two numbers.
         /// </summary>
-        /// <param name="lowerBound">Lower bound of the interval.</param>
-        /// <param name="upperBound">Upper bound of the interval.</param>
+        /// <param name="internalLowerBound">Lower bound of the interval.</param>
+        /// <param name="internalUpperBound">Upper bound of the interval.</param>
         /// <returns>The interval with specified lower and upper bounds.</returns>
-        public Interval(double lowerBound, double upperBound)
+        public Interval(double internalLowerBound, double internalUpperBound)
         {
-            if (double.IsNaN(lowerBound))
+            if (double.IsNaN(internalLowerBound))
                 throw new IntervalClassException($"Lower bound of interval is 'NaN'");
 
-            if (double.IsNaN(upperBound))
+            if (double.IsNaN(internalUpperBound))
                 throw new IntervalClassException($"Upper bound of interval is 'NaN'");
 
-            if (lowerBound > upperBound)
-                throw new IntervalClassException($"Lower interval bound must be less or equal than upper interval bound ({lowerBound}, {upperBound})");
+            if (internalLowerBound > internalUpperBound)
+                throw new IntervalClassException($"Lower interval bound must be less or equal than upper interval bound ({internalLowerBound}, {internalUpperBound})");
 
-            if (double.IsNegativeInfinity(lowerBound) && double.IsNegativeInfinity(upperBound)
-                || double.IsPositiveInfinity(lowerBound) && double.IsPositiveInfinity(upperBound))
+            if (double.IsNegativeInfinity(internalLowerBound) && double.IsNegativeInfinity(internalUpperBound)
+                || double.IsPositiveInfinity(internalLowerBound) && double.IsPositiveInfinity(internalUpperBound))
             {
                 throw new IntervalClassException($"todo error message");
             }
             
-            LowerBound = lowerBound;
-            UpperBound = upperBound;
+            InternalLowerBound = internalLowerBound;
+            InternalUpperBound = internalUpperBound;
             IsNotEmpty = true;
         }
         

@@ -17,17 +17,24 @@ namespace IntervalClass.Testing.Create
             var createdInterval = new Interval(number);
 
             Assert.IsTrue(createdInterval != Interval.Empty);
+            Assert.IsTrue(createdInterval.LowerBound == number);
+            Assert.IsTrue(createdInterval.UpperBound == number);
         }
 
         [Test]
         [Repeat(RepeatCount)]
         public void Number_Number_Ordered_Success()
         {
-            var numbers = GenerateDoubleNumbers(2);
-            var orderedNumber = numbers.OrderBy(x => x).ToArray();
-            var createdInterval = new Interval(orderedNumber[0], orderedNumber[1]);
+            var orderedNumbers = GenerateDoubleNumbers(2)
+                .OrderBy(x => x)
+                .ToArray();
+            var lowerBound = orderedNumbers[0];
+            var upperBound = orderedNumbers[1];
+            var createdInterval = new Interval(lowerBound, upperBound);
 
             Assert.IsTrue(createdInterval != Interval.Empty);
+            Assert.IsTrue(createdInterval.LowerBound == lowerBound);
+            Assert.IsTrue(createdInterval.UpperBound == upperBound);
         }
 
         [Test]
@@ -63,6 +70,8 @@ namespace IntervalClass.Testing.Create
             var createdInterval = new Interval(number, double.PositiveInfinity);
 
             Assert.IsTrue(createdInterval != Interval.Empty);
+            Assert.IsTrue(createdInterval.LowerBound == number);
+            Assert.IsTrue(double.IsPositiveInfinity(createdInterval.UpperBound));
         }
         
         [Test]

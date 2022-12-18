@@ -50,7 +50,7 @@
   </ItemGroup>
   <ItemGroup>
     <Compile Include="Create\FromNegativeInfinity.cs" />
-    <Compile Include="Create\FromEmpty.cs" />
+    <Compile Include="Create\Default.cs" />
     <Compile Include="Create\FromNaN.cs" />
     <Compile Include="Create\FromNumber.cs" />
     <Compile Include="Create\FromPositiveInfinity.cs" />

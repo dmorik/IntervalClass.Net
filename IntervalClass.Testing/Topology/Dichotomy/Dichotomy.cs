@@ -9,10 +9,10 @@ namespace IntervalClass.Testing.Topology.Dichotomy
         [Test]
         public void Empty_Success()
         {
-            var error = ShouldCatchIntervalClassException(()
-                => Interval.Empty.Dichotomy());
+            var result = Interval.Empty.Dichotomy();
             
-            Assert.IsTrue(error);
+            Assert.IsTrue(result.Length == 1);
+            Assert.IsTrue(result[0] == Interval.Empty);
         }
 
         [Test]

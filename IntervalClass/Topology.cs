@@ -176,7 +176,7 @@ namespace IntervalClass
         public Interval[] Dichotomy()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                return new Interval[] { Empty };
 
             if (IsPoint())
                 return new Interval[] { this };

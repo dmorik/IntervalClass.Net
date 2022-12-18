@@ -12,6 +12,9 @@ namespace IntervalClass
         /// <returns></returns>
         public static Interval operator +(Interval interval)
         {
+            if (interval.IsEmpty)
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+            
             return new Interval(interval.LowerBound, interval.UpperBound);
         }
 
@@ -22,6 +25,9 @@ namespace IntervalClass
         /// <returns></returns>
         public static Interval operator -(Interval interval)
         {
+            if (interval.IsEmpty)
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+            
             return new Interval(-interval.UpperBound, -interval.LowerBound);
         }
         
@@ -33,6 +39,12 @@ namespace IntervalClass
         /// <returns>Sum of intervals.</returns>
         public static Interval operator +(Interval firstInterval, Interval secondInterval)
         {
+            if (firstInterval.IsEmpty)
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+            
+            if (secondInterval.IsEmpty)
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+            
             var lowerBound = Previous.Double(firstInterval.LowerBound + secondInterval.LowerBound);
             var upperBound = Next.Double(firstInterval.UpperBound + secondInterval.UpperBound);
 
@@ -47,6 +59,12 @@ namespace IntervalClass
         /// <returns>The result of a subtraction.</returns>
         public static Interval operator -(Interval firstInterval, Interval secondInterval)
         {
+            if (firstInterval.IsEmpty)
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+            
+            if (secondInterval.IsEmpty)
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+            
             var lowerBound = Previous.Double(firstInterval.LowerBound - secondInterval.UpperBound);
             var upperBound = Next.Double(firstInterval.UpperBound - secondInterval.LowerBound);
 
@@ -61,6 +79,12 @@ namespace IntervalClass
         /// <returns>The result of a multiplication.</returns>
         public static Interval operator *(Interval firstInterval, Interval secondInterval)
         {
+            if (firstInterval.IsEmpty)
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+            
+            if (secondInterval.IsEmpty)
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+            
             var lowerLower = firstInterval.LowerBound * secondInterval.LowerBound;
             var lowerUpper = firstInterval.LowerBound * secondInterval.UpperBound;
             var upperLower = firstInterval.UpperBound * secondInterval.LowerBound;
@@ -80,6 +104,12 @@ namespace IntervalClass
         /// <returns>The result of a division.</returns>
         public static Interval operator /(Interval firstInterval, Interval secondInterval)
         {
+            if (firstInterval.IsEmpty)
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+            
+            if (secondInterval.IsEmpty)
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+            
             if (secondInterval.Contains(0.0))
                 throw new IntervalClassException($"Division by an interval containing zero");
 

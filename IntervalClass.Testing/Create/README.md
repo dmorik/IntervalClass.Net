@@ -8,7 +8,7 @@
 |`+Inf`|`double.PositiveInfinity`|
 |`NaN`|`double.NaN`|
 |`<number>`|common number|
-|`<number1>, <number2>`|common numbers & `number1` is less or equals than `number2`|
+|`<number1>, <number2>`|common numbers & `number1` is less or equal than `number2`|
 
 ## The tests guaranteed behavior
 

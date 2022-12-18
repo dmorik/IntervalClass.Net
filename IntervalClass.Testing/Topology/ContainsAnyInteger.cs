@@ -16,21 +16,21 @@ namespace IntervalClass.Testing.Topology
         [Repeat(RepeatCount)]
         public void Infinity_Success()
         {
-            Assert.IsFalse(Interval.Infinity.ContainsAnyInteger());
+            Assert.IsTrue(Interval.Infinity.ContainsAnyInteger());
         }
         
         [Test]
         [Repeat(RepeatCount)]
         public void NegativeInfinity_Success()
         {
-            Assert.IsFalse(Interval.NegativeInfinity.ContainsAnyInteger());
+            Assert.IsTrue(Interval.NegativeInfinity.ContainsAnyInteger());
         }
         
         [Test]
         [Repeat(RepeatCount)]
         public void PositiveInfinity_Success()
         {
-            Assert.IsFalse(Interval.PositiveInfinity.ContainsAnyInteger());
+            Assert.IsTrue(Interval.PositiveInfinity.ContainsAnyInteger());
         }
     }
 }

@@ -7,6 +7,11 @@ namespace IntervalClass
 {
     public readonly partial struct Interval
     {
+        /// <summary>
+        /// Returns the interval intersection with specified interval.
+        /// </summary>
+        /// <param name="interval">Specified interval.</param>
+        /// <returns>Interval intersection with specified interval.</returns>
         public Interval Intersect(Interval interval)
         {
             if (IsEmpty || interval.IsEmpty)
@@ -48,6 +53,11 @@ namespace IntervalClass
             return Math.Floor(UpperBound) >= Math.Ceiling(LowerBound);
         }
 
+        /// <summary>
+        /// Returns the interval union with the specified interval.
+        /// </summary>
+        /// <param name="interval">The specified interval.</param>
+        /// <returns>The interval union with the specified interval.</returns>
         public Interval UnityWith(Interval interval)
         {
             if (IsEmpty)
@@ -188,6 +198,11 @@ namespace IntervalClass
                 : new Interval[] { leftPart };
         }
 
+        /// <summary>
+        /// Indicates that the interval intersects with specified interval.
+        /// </summary>
+        /// <param name="interval">The specified interval.</param>
+        /// <returns>True if the interval intersects the specified interval, False - otherwise.</returns>
         public bool IsIntersects(Interval interval)
         {
             return !Intersect(interval).IsEmpty;

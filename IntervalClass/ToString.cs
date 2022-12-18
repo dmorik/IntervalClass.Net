@@ -21,6 +21,35 @@ namespace IntervalClass
                 .Select(x => $"0.{new string('0', x)}e0")
                 .ToArray();
 
+        private static void AddNumber(StringBuilder stringBuilder, double number, int digitsAfterPoint)
+        {
+            var formatString = CachedNumberFormatStrings[digitsAfterPoint];
+            var scientificFormatString = CachedNumberScientificFormatStrings[digitsAfterPoint];
+            var absNumber = Math.Abs(number);
+                
+            if (absNumber > Math.Pow(10.0, -digitsAfterPoint))
+            {
+                var signString = number < 0.0 
+                    ? "-" 
+                    : "+";
+                    
+                stringBuilder.Append(signString);
+            }
+
+            if (double.IsInfinity(number))
+            {
+                stringBuilder.Append("Inf");
+
+                return;
+            }
+                
+            var numberAbsString = absNumber < Math.Pow(10.0, DefaultDigitsAfterPoint)
+                ? string.Format(CultureInfo.InvariantCulture, formatString, absNumber)
+                : Math.Abs(number).ToString(scientificFormatString, CultureInfo.InvariantCulture);
+
+            stringBuilder.Append(numberAbsString);
+        }
+        
         private string ToString(int digitsAfterPoint)
         {
             if (IsEmpty)
@@ -31,45 +60,16 @@ namespace IntervalClass
 
             if (digitsAfterPoint > 15)
                 digitsAfterPoint = 15;
-
-            var formatString = CachedNumberFormatStrings[digitsAfterPoint];
-            var scientificFormatString = CachedNumberScientificFormatStrings[digitsAfterPoint];
+            
             var stringBuilder = new StringBuilder();
 
             stringBuilder.Append("[");
 
-            void addNumber(double number)
-            {
-                var absNumber = Math.Abs(number);
-                
-                if (absNumber > Math.Pow(10.0, -digitsAfterPoint))
-                {
-                    var signString = number < 0.0 
-                        ? "-" 
-                        : "+";
-                    
-                    stringBuilder.Append(signString);
-                }
-
-                if (double.IsInfinity(number))
-                {
-                    stringBuilder.Append("Inf");
-
-                    return;
-                }
-                
-                var numberAbsString = absNumber < Math.Pow(10.0, DefaultDigitsAfterPoint)
-                    ? string.Format(CultureInfo.InvariantCulture, formatString, absNumber)
-                    : Math.Abs(number).ToString(scientificFormatString, CultureInfo.InvariantCulture);
-
-                stringBuilder.Append(numberAbsString);
-            }
-
-            addNumber(LowerBound);
+            AddNumber(stringBuilder, LowerBound, digitsAfterPoint);
 
             stringBuilder.Append(", ");
 
-            addNumber(UpperBound);
+            AddNumber(stringBuilder, UpperBound, digitsAfterPoint);
 
             stringBuilder.Append("]");
 

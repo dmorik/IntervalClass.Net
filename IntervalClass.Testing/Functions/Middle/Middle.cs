@@ -1,7 +1,7 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 
-namespace IntervalClass.Testing.Topology.Middle
+namespace IntervalClass.Testing.Functions.Middle
 {
     internal sealed class Middle : TestBase
     {

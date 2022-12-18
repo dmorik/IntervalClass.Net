@@ -2,7 +2,7 @@
 using NextAfter.Net;
 using NUnit.Framework;
 
-namespace IntervalClass.Testing.Topology.Dichotomy
+namespace IntervalClass.Testing.SetOperations.Dichotomy
 {
     internal sealed class Dichotomy : TestBase
     {

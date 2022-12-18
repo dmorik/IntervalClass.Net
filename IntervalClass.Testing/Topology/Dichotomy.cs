@@ -1,19 +1,22 @@
-﻿using NUnit.Framework;
+﻿using System.Linq;
+using NUnit.Framework;
+// ReSharper disable CompareOfFloatsByEqualityOperator
 
 namespace IntervalClass.Testing.Topology
 {
     internal sealed class Dichotomy : TestBase
     {
         [Test]
-        public void Empty()
+        public void Empty_Success()
         {
-            var result = Interval.Empty.Dichotomy();
+            var error = ShouldCatchIntervalClassException(()
+                => Interval.Empty.Dichotomy());
             
-            Assert.IsTrue(result.Length == 0);
+            Assert.IsTrue(error);
         }
 
         [Test]
-        public void Infinity()
+        public void Infinity_Success()
         {
             var result = Interval.Infinity.Dichotomy();
             
@@ -23,7 +26,7 @@ namespace IntervalClass.Testing.Topology
         }
         
         [Test]
-        public void NegativeInfinity()
+        public void NegativeInfinity_Failure()
         {
             var error = ShouldCatchIntervalClassException(()
                 => Interval.NegativeInfinity.Dichotomy());
@@ -32,12 +35,42 @@ namespace IntervalClass.Testing.Topology
         }
         
         [Test]
-        public void PositiveInfinity()
+        public void PositiveInfinity_Failure()
         {
             var error = ShouldCatchIntervalClassException(()
                 => Interval.NegativeInfinity.Dichotomy());
             
             Assert.IsTrue(error);
+        }
+
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Point_Success()
+        {
+            var number = GenerateDoubleNumber();
+            var interval = new Interval(number);
+            var dichotomyResult = interval.Dichotomy();
+            
+            Assert.IsTrue(dichotomyResult.Length == 1);
+            Assert.IsTrue(dichotomyResult[0] == interval);
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Common_Success()
+        {
+            var orderedNumbers = GenerateDoubleNumbers(2)
+                .OrderBy(x => x)
+                .ToArray();
+            var lowerBound = orderedNumbers[0];
+            var upperBound = orderedNumbers[1];
+            var interval = new Interval(lowerBound, upperBound);
+            var dichotomyResult = interval.Dichotomy();
+            
+            Assert.IsTrue(dichotomyResult.Length == 2);
+            Assert.IsTrue(dichotomyResult[0].LowerBound == lowerBound);
+            Assert.IsTrue(dichotomyResult[1].UpperBound == upperBound);
+            Assert.IsTrue(dichotomyResult[0].UpperBound == dichotomyResult[1].LowerBound);
         }
     }
 }

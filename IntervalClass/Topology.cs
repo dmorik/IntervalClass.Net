@@ -178,7 +178,7 @@ namespace IntervalClass
         public Interval[] Dichotomy()
         {
             if (IsEmpty)
-                return Array.Empty<Interval>();
+                throw new IntervalClassException($"Argument is the empty interval");
 
             var middle = Middle();
             var middlePoint = middle.LowerBound;

@@ -46,6 +46,17 @@ namespace IntervalClass.Testing
 
             return result.ToArray();
         }
+
+        public static Interval GenerateInterval()
+        {
+            var orderedNumbers = GenerateDoubleNumbers(2)
+                .OrderBy(x => x)
+                .ToArray();
+            var lowerBound = orderedNumbers[0];
+            var upperBound = orderedNumbers[1];
+
+            return new Interval(lowerBound, upperBound);
+        }
         
         protected static bool ShouldCatchIntervalClassException(Action action)
         {

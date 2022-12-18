@@ -2,7 +2,6 @@
 using NUnit.Framework;
 
 // ReSharper disable ObjectCreationAsStatement
-// ReSharper disable CompareOfFloatsByEqualityOperator
 
 namespace IntervalClass.Testing.Create
 {
@@ -17,8 +16,8 @@ namespace IntervalClass.Testing.Create
             var createdInterval = new Interval(number);
 
             Assert.IsTrue(createdInterval != Interval.Empty);
-            Assert.IsTrue(createdInterval.LowerBound == number);
-            Assert.IsTrue(createdInterval.UpperBound == number);
+            Assert.IsTrue(createdInterval.LowerBound.Equals(number));
+            Assert.IsTrue(createdInterval.UpperBound.Equals(number));
         }
 
         [Test]
@@ -33,8 +32,8 @@ namespace IntervalClass.Testing.Create
             var createdInterval = new Interval(lowerBound, upperBound);
 
             Assert.IsTrue(createdInterval != Interval.Empty);
-            Assert.IsTrue(createdInterval.LowerBound == lowerBound);
-            Assert.IsTrue(createdInterval.UpperBound == upperBound);
+            Assert.IsTrue(createdInterval.LowerBound.Equals(lowerBound));
+            Assert.IsTrue(createdInterval.UpperBound.Equals(upperBound));
         }
 
         [Test]
@@ -70,7 +69,7 @@ namespace IntervalClass.Testing.Create
             var createdInterval = new Interval(number, double.PositiveInfinity);
 
             Assert.IsTrue(createdInterval != Interval.Empty);
-            Assert.IsTrue(createdInterval.LowerBound == number);
+            Assert.IsTrue(createdInterval.LowerBound.Equals(number));
             Assert.IsTrue(double.IsPositiveInfinity(createdInterval.UpperBound));
         }
         

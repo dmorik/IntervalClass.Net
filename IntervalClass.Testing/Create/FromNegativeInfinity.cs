@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-// ReSharper disable CompareOfFloatsByEqualityOperator
 
 // ReSharper disable ObjectCreationAsStatement
 
@@ -45,7 +44,7 @@ namespace IntervalClass.Testing.Create
 
             Assert.IsTrue(createdInterval != Interval.Empty);
             Assert.IsTrue(double.IsNegativeInfinity(createdInterval.LowerBound));
-            Assert.IsTrue(createdInterval.UpperBound == number);
+            Assert.IsTrue(createdInterval.UpperBound.Equals(number));
         }
         
         [Test]

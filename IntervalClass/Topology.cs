@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 
-// ReSharper disable CompareOfFloatsByEqualityOperator
-
 namespace IntervalClass
 {
     public readonly partial struct Interval
@@ -35,7 +33,7 @@ namespace IntervalClass
             if (IsEmpty)
                 return false;
             
-            return LowerBound == UpperBound;
+            return LowerBound.Equals(UpperBound);
         }
         
         /// <summary>

@@ -1,6 +1,4 @@
-﻿using System;
-
-namespace IntervalClass
+﻿namespace IntervalClass
 {
     /// <summary>
     /// Implements the interval class.

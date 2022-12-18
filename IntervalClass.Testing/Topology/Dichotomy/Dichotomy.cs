@@ -1,8 +1,6 @@
 ﻿using System.Linq;
 using NUnit.Framework;
 
-// ReSharper disable CompareOfFloatsByEqualityOperator
-
 namespace IntervalClass.Testing.Topology.Dichotomy
 {
     internal sealed class Dichotomy : TestBase
@@ -69,9 +67,9 @@ namespace IntervalClass.Testing.Topology.Dichotomy
             var dichotomyResult = interval.Dichotomy();
             
             Assert.IsTrue(dichotomyResult.Length == 2);
-            Assert.IsTrue(dichotomyResult[0].LowerBound == lowerBound);
-            Assert.IsTrue(dichotomyResult[1].UpperBound == upperBound);
-            Assert.IsTrue(dichotomyResult[0].UpperBound == dichotomyResult[1].LowerBound);
+            Assert.IsTrue(dichotomyResult[0].LowerBound.Equals(lowerBound));
+            Assert.IsTrue(dichotomyResult[1].UpperBound.Equals(upperBound));
+            Assert.IsTrue(dichotomyResult[0].UpperBound.Equals(dichotomyResult[1].LowerBound));
         }
     }
 }

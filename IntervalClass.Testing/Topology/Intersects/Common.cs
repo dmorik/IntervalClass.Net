@@ -70,10 +70,7 @@ namespace IntervalClass.Testing.Topology.Intersects
         [Repeat(RepeatCount)]
         public void Common_SameCommon()
         {
-            var orderedNumbers = GenerateDoubleNumbers(2)
-                .OrderBy(x => x)
-                .ToArray();
-            var interval = new Interval(orderedNumbers[0], orderedNumbers[1]);
+            var interval = GenerateInterval();
             var intersection = interval.Intersect(interval);
             
             Assert.IsTrue(intersection == interval);
@@ -103,11 +100,7 @@ namespace IntervalClass.Testing.Topology.Intersects
         [Repeat(RepeatCount)]
         public void Common_Empty()
         {
-            var orderedNumbers = GenerateDoubleNumbers(2)
-                .OrderBy(x => x)
-                .ToArray();
-
-            var interval = new Interval(orderedNumbers[0], orderedNumbers[1]);
+            var interval = GenerateInterval();
             var intersection = interval.Intersect(Interval.Empty);
             
             Assert.IsTrue(intersection == Interval.Empty);
@@ -117,14 +110,32 @@ namespace IntervalClass.Testing.Topology.Intersects
         [Repeat(RepeatCount)]
         public void Common_Infinity()
         {
-            var orderedNumbers = GenerateDoubleNumbers(2)
-                .OrderBy(x => x)
-                .ToArray();
-
-            var interval = new Interval(orderedNumbers[0], orderedNumbers[1]);
+            var interval = GenerateInterval();
             var intersection = interval.Intersect(Interval.Infinity);
             
             Assert.IsTrue(intersection == interval);
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Common_NegativeInfinity()
+        {
+            var interval = GenerateInterval();
+            var intersection = interval.Intersect(Interval.NegativeInfinity);
+            
+            Assert.IsTrue(intersection.LowerBound.Equals(interval.LowerBound));
+            Assert.IsTrue(intersection.UpperBound.Equals(interval.UpperBound > 0.0 ? 0.0 : interval.UpperBound));
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Common_PositiveInfinity()
+        {
+            var interval = GenerateInterval();
+            var intersection = interval.Intersect(Interval.NegativeInfinity);
+            
+            Assert.IsTrue(intersection.LowerBound.Equals(interval.LowerBound));
+            Assert.IsTrue(intersection.UpperBound.Equals(interval.UpperBound > 0.0 ? 0.0 : interval.UpperBound));
         }
     }
 }

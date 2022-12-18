@@ -1,6 +1,6 @@
 ﻿using NUnit.Framework;
 
-namespace IntervalClass.Testing.Topology.ContainsAnyInteger
+namespace IntervalClass.Testing.Topology.IsContainsAnyInteger
 {
     internal sealed class ContainsAnyInteger : TestBase
     {

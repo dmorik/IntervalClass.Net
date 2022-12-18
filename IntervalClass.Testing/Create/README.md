@@ -3,7 +3,7 @@
 ## Designations
 
 |Designation|Meaning|
-|:-:|:-:|
+|-|-|
 |`-Inf`|`double.NegativeInfinity`|
 |`+Inf`|`double.PositiveInfinity`|
 |`NaN`|`double.NaN`|
@@ -14,12 +14,12 @@
 
 ### Creating intervals without arguments 
 |Result|
-|:-:|
+|-|
 |`Interval.Empty`|
 
 ### Creating intervals with only one argument
 |Argument|Result|
-|:-:|:-:|
+|-|-|
 |`NaN`|`IntervalClassException`|
 |`+Inf`|`IntervalClassException`|
 |`-Inf`|`IntervalClassException`|
@@ -27,7 +27,7 @@
 
 ### Creating intervals by two arguments
 |Argument 1|Argument 2|Result|
-|:-:|:-:|:-:|
+|-|-|-|
 |`NaN`|`NaN`|`IntervalClassException`|
 |`NaN`|`-Inf`|`IntervalClassException`|
 |`NaN`|`+Inf`|`IntervalClassException`|

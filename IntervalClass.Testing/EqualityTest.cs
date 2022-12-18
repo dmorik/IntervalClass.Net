@@ -1,5 +1,4 @@
 ﻿using NUnit.Framework;
-
 // ReSharper disable EqualExpressionComparison
 
 namespace IntervalClass.Testing

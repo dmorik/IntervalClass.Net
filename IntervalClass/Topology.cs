@@ -127,7 +127,7 @@ namespace IntervalClass
         public Interval Width()
         {
             if (IsEmpty)
-                throw new IntervalClassException($"Argument is the empty interval");
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
 
             if (IsPoint())
                 return (Interval)0.0;
@@ -143,7 +143,7 @@ namespace IntervalClass
         public Interval Radius()
         {
             if (IsEmpty)
-                throw new IntervalClassException($"Argument is the empty interval");
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
 
             var width = Width();
             var radius = width / (Interval)2.0;
@@ -159,7 +159,7 @@ namespace IntervalClass
         public Interval Middle()
         {
             if (IsEmpty)
-                throw new IntervalClassException($"Argument is the empty interval");
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
 
             if (this == Infinity)
                 return (Interval)0.0;
@@ -176,24 +176,16 @@ namespace IntervalClass
         public Interval[] Dichotomy()
         {
             if (IsEmpty)
-                throw new IntervalClassException($"Argument is the empty interval");
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
 
+            if (IsPoint())
+                return new Interval[] { this };
+            
             var middle = Middle();
             var middlePoint = middle.LowerBound;
-            var leftPart = new Interval(LowerBound, middlePoint);
-            var rightPart = new Interval(middlePoint, UpperBound);
+            var middlePointInterval = new Interval(middlePoint);
 
-            var result = new List<Interval>();
-            
-            if (!leftPart.IsPoint())
-                result.Add(leftPart);
-            
-            if (!rightPart.IsPoint())
-                result.Add(rightPart);
-
-            return result.Count > 0
-                ? result.ToArray()
-                : new Interval[] { leftPart };
+            return Except(middlePointInterval);
         }
 
         /// <summary>
@@ -214,7 +206,7 @@ namespace IntervalClass
         public double Magnitude()
         {
             if (IsEmpty)
-                throw new IntervalClassException($"Argument is the empty interval");
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
 
             return Math.Max(Math.Abs(LowerBound), Math.Abs(UpperBound));
         }
@@ -227,7 +219,7 @@ namespace IntervalClass
         public double Mignitude()
         {
             if (IsEmpty)
-                throw new IntervalClassException($"Argument is the empty interval");
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
 
             if (Contains(0.0))
                 return 0.0;

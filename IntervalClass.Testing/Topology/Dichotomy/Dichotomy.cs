@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using NextAfter.Net;
 using NUnit.Framework;
 
 namespace IntervalClass.Testing.Topology.Dichotomy
@@ -70,6 +71,19 @@ namespace IntervalClass.Testing.Topology.Dichotomy
             Assert.IsTrue(dichotomyResult[0].LowerBound.Equals(lowerBound));
             Assert.IsTrue(dichotomyResult[1].UpperBound.Equals(upperBound));
             Assert.IsTrue(dichotomyResult[0].UpperBound.Equals(dichotomyResult[1].LowerBound));
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void TwoNeighboursDoubleInterval_Success()
+        {
+            var number = GenerateDoubleNumber();
+            var nextNumber = Next.Double(number);
+            var interval = new Interval(number, nextNumber);
+            var dichotomyResult = interval.Dichotomy();
+            
+            Assert.IsTrue(dichotomyResult.Length == 1);
+            Assert.IsTrue(dichotomyResult[0].Equals(interval));
         }
     }
 }

@@ -8,7 +8,7 @@ namespace IntervalClass
 {
     public readonly partial struct Interval
     {
-        private const int DefaultDigitsAfterPoint = 2;
+        internal const int DefaultDigitsAfterPoint = 2;
         
         private static IReadOnlyList<string> CachedNumberFormatStrings { get; } 
             = Enumerable
@@ -48,6 +48,15 @@ namespace IntervalClass
                 : Math.Abs(number).ToString(scientificFormatString, CultureInfo.InvariantCulture);
 
             stringBuilder.Append(numberAbsString);
+        }
+
+        internal static string NumberToString(double number, int digitsAfterPoint)
+        {
+            var stringBuilder = new StringBuilder();
+
+            AddNumber(stringBuilder, number, digitsAfterPoint);
+            
+            return stringBuilder.ToString();
         }
         
         private string ToString(int digitsAfterPoint)

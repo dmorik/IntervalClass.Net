@@ -7,14 +7,14 @@
     {
         private double InternalLowerBound { get; }
         /// <summary>
-        /// Lower bound of interval.
+        /// The lower bound of the interval.
         /// </summary>
         public double LowerBound 
             => IsEmpty ? double.NaN : InternalLowerBound;
 
         private double InternalUpperBound { get; }
         /// <summary>
-        /// Upper bound of interval.
+        /// The upper bound of the interval.
         /// </summary>
         public double UpperBound 
             => IsEmpty ? double.NaN : InternalUpperBound;
@@ -23,26 +23,26 @@
         private bool IsEmpty => !IsNotEmpty;
 
         /// <summary>
-        /// Create interval by two numbers.
+        /// Create the interval by two numbers.
         /// </summary>
-        /// <param name="lowerBound">Lower bound of the interval.</param>
-        /// <param name="upperBound">Upper bound of the interval.</param>
+        /// <param name="lowerBound">The lower bound of the interval.</param>
+        /// <param name="upperBound">The upper bound of the interval.</param>
         /// <returns>The interval with specified lower and upper bounds.</returns>
         public Interval(double lowerBound, double upperBound)
         {
             if (double.IsNaN(lowerBound))
-                throw new IntervalClassException($"Lower bound of interval is 'NaN'");
+                throw new IntervalClassException(ErrorMessagesFactory.LowerBoundIsNan(lowerBound, upperBound));
 
             if (double.IsNaN(upperBound))
-                throw new IntervalClassException($"Upper bound of interval is 'NaN'");
+                throw new IntervalClassException(ErrorMessagesFactory.UpperBoundIsNan(lowerBound, upperBound));
 
             if (lowerBound > upperBound)
-                throw new IntervalClassException($"Lower interval bound must be less or equal than upper interval bound ({lowerBound}, {upperBound})");
+                throw new IntervalClassException(ErrorMessagesFactory.UpperBoundLessThanLowerBound(lowerBound, upperBound));
 
             if (double.IsNegativeInfinity(lowerBound) && double.IsNegativeInfinity(upperBound)
                 || double.IsPositiveInfinity(lowerBound) && double.IsPositiveInfinity(upperBound))
             {
-                throw new IntervalClassException($"todo error message");
+                throw new IntervalClassException(ErrorMessagesFactory.UpperBoundLessThanLowerBound(lowerBound, upperBound));
             }
             
             InternalLowerBound = lowerBound;
@@ -51,10 +51,10 @@
         }
         
         /// <summary>
-        /// Create interval by single number.
+        /// Create the interval by the single number.
         /// </summary>
         /// <param name="number">Number.</param>
-        /// <returns>Interval consisting of a single number.</returns>
+        /// <returns>The interval consisting of the single number.</returns>
         public Interval(double number)
             : this(number, number)
         { }

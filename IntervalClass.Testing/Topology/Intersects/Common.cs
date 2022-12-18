@@ -122,9 +122,11 @@ namespace IntervalClass.Testing.Topology.Intersects
         {
             var interval = GenerateInterval();
             var intersection = interval.Intersect(Interval.NegativeInfinity);
+            var shouldIntersection = interval > 0.0
+                ? Interval.Empty
+                : new Interval(interval.LowerBound, interval.UpperBound > 0.0 ? 0.0 : interval.UpperBound);
             
-            Assert.IsTrue(intersection.LowerBound.Equals(interval.LowerBound));
-            Assert.IsTrue(intersection.UpperBound.Equals(interval.UpperBound > 0.0 ? 0.0 : interval.UpperBound));
+            Assert.IsTrue(intersection == shouldIntersection);
         }
         
         [Test]
@@ -132,10 +134,12 @@ namespace IntervalClass.Testing.Topology.Intersects
         public void Common_PositiveInfinity()
         {
             var interval = GenerateInterval();
-            var intersection = interval.Intersect(Interval.NegativeInfinity);
+            var intersection = interval.Intersect(Interval.PositiveInfinity);
+            var shouldIntersection = interval < 0.0
+                ? Interval.Empty
+                : new Interval(interval.LowerBound < 0.0 ? 0.0 : interval.LowerBound, interval.UpperBound);
             
-            Assert.IsTrue(intersection.LowerBound.Equals(interval.LowerBound));
-            Assert.IsTrue(intersection.UpperBound.Equals(interval.UpperBound > 0.0 ? 0.0 : interval.UpperBound));
+            Assert.IsTrue(intersection == shouldIntersection);
         }
     }
 }

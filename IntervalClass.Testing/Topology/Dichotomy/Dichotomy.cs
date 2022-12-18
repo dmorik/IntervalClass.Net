@@ -1,8 +1,9 @@
 ﻿using System.Linq;
 using NUnit.Framework;
+
 // ReSharper disable CompareOfFloatsByEqualityOperator
 
-namespace IntervalClass.Testing.Topology
+namespace IntervalClass.Testing.Topology.Dichotomy
 {
     internal sealed class Dichotomy : TestBase
     {

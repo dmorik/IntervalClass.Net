@@ -60,7 +60,7 @@
     <Compile Include="Topology\ContainsAnyInteger.cs" />
     <Compile Include="Topology\ContainsInterval.cs" />
     <Compile Include="Topology\ContainsNumber.cs" />
-    <Compile Include="Topology\Dichotomy.cs" />
+    <Compile Include="Topology\Dichotomy\Dichotomy.cs" />
     <Compile Include="Topology\Intersects\Common.cs" />
     <Compile Include="Topology\Intersects\Empty.cs" />
     <Compile Include="Topology\Intersects\Infinity.cs" />

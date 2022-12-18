@@ -34,12 +34,50 @@ namespace IntervalClass.Testing
         }
 
         [Test]
-        public void Inf_Equals_Inf()
+        public void Infinity_Equals_Infinity()
         {
             var infInterval = Interval.Infinity;
             var anotherInfInterval = new Interval(double.NegativeInfinity, double.PositiveInfinity);
 
             TestEqualIntervals(infInterval, anotherInfInterval);
+        }
+        
+        [Test]
+        public void PositiveInfinity_Equals_PositiveInfinity()
+        {
+            var positiveInfinityInterval = Interval.PositiveInfinity;
+            var anotherPositiveInfinityInterval = new Interval(0.0, double.PositiveInfinity);
+
+            TestEqualIntervals(positiveInfinityInterval, anotherPositiveInfinityInterval);
+        }
+        
+        [Test]
+        public void NegativeInfinity_Equals_NegativeInfinity()
+        {
+            var negativeInfinityInterval = Interval.PositiveInfinity;
+            var anotherNegativeInfinityInterval = new Interval(0.0, double.PositiveInfinity);
+
+            TestEqualIntervals(negativeInfinityInterval, anotherNegativeInfinityInterval);
+        }
+
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Common_Equals_SameCommon()
+        {
+            var interval = GenerateInterval();
+            var anotherInterval = new Interval(interval.LowerBound, interval.UpperBound);
+            
+            TestEqualIntervals(interval, anotherInterval);
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Point_Equals_SamePoint()
+        {
+            var interval = GenerateInterval();
+            var anotherInterval = new Interval(interval.LowerBound, interval.UpperBound);
+            
+            TestEqualIntervals(interval, anotherInterval);
         }
     }
 }

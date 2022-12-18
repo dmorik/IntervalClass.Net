@@ -57,7 +57,7 @@
     <Compile Include="EqualityTest.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="TestBase.cs" />
-    <Compile Include="Topology\ContainsAnyInteger.cs" />
+    <Compile Include="Topology\ContainsAnyInteger\ContainsAnyInteger.cs" />
     <Compile Include="Topology\ContainsInterval.cs" />
     <Compile Include="Topology\ContainsNumber.cs" />
     <Compile Include="Topology\Dichotomy\Dichotomy.cs" />

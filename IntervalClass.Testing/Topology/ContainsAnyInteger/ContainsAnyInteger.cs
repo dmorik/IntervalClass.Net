@@ -1,7 +1,6 @@
-﻿using System.Linq;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace IntervalClass.Testing.Topology
+namespace IntervalClass.Testing.Topology.ContainsAnyInteger
 {
     internal sealed class ContainsAnyInteger : TestBase
     {

@@ -25,28 +25,28 @@
         /// <summary>
         /// Create interval by two numbers.
         /// </summary>
-        /// <param name="internalLowerBound">Lower bound of the interval.</param>
-        /// <param name="internalUpperBound">Upper bound of the interval.</param>
+        /// <param name="lowerBound">Lower bound of the interval.</param>
+        /// <param name="upperBound">Upper bound of the interval.</param>
         /// <returns>The interval with specified lower and upper bounds.</returns>
-        public Interval(double internalLowerBound, double internalUpperBound)
+        public Interval(double lowerBound, double upperBound)
         {
-            if (double.IsNaN(internalLowerBound))
+            if (double.IsNaN(lowerBound))
                 throw new IntervalClassException($"Lower bound of interval is 'NaN'");
 
-            if (double.IsNaN(internalUpperBound))
+            if (double.IsNaN(upperBound))
                 throw new IntervalClassException($"Upper bound of interval is 'NaN'");
 
-            if (internalLowerBound > internalUpperBound)
-                throw new IntervalClassException($"Lower interval bound must be less or equal than upper interval bound ({internalLowerBound}, {internalUpperBound})");
+            if (lowerBound > upperBound)
+                throw new IntervalClassException($"Lower interval bound must be less or equal than upper interval bound ({lowerBound}, {upperBound})");
 
-            if (double.IsNegativeInfinity(internalLowerBound) && double.IsNegativeInfinity(internalUpperBound)
-                || double.IsPositiveInfinity(internalLowerBound) && double.IsPositiveInfinity(internalUpperBound))
+            if (double.IsNegativeInfinity(lowerBound) && double.IsNegativeInfinity(upperBound)
+                || double.IsPositiveInfinity(lowerBound) && double.IsPositiveInfinity(upperBound))
             {
                 throw new IntervalClassException($"todo error message");
             }
             
-            InternalLowerBound = internalLowerBound;
-            InternalUpperBound = internalUpperBound;
+            InternalLowerBound = lowerBound;
+            InternalUpperBound = upperBound;
             IsNotEmpty = true;
         }
         

@@ -42,7 +42,7 @@ namespace IntervalClass
         /// Indicates that the interval contains any integer number.
         /// </summary>
         /// <returns>True if the interval contains any integer number, False - otherwise.</returns>
-        public bool ContainsAnyInteger()
+        public bool IsContainsAnyInteger()
         {
             if (IsEmpty)
                 return false;

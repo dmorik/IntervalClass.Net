@@ -8,28 +8,28 @@ namespace IntervalClass.Testing.Topology.ContainsAnyInteger
         [Repeat(RepeatCount)]
         public void Empty_Failure()
         {
-            Assert.IsFalse(Interval.Empty.ContainsAnyInteger());
+            Assert.IsFalse(Interval.Empty.IsContainsAnyInteger());
         }
         
         [Test]
         [Repeat(RepeatCount)]
         public void Infinity_Success()
         {
-            Assert.IsTrue(Interval.Infinity.ContainsAnyInteger());
+            Assert.IsTrue(Interval.Infinity.IsContainsAnyInteger());
         }
         
         [Test]
         [Repeat(RepeatCount)]
         public void NegativeInfinity_Success()
         {
-            Assert.IsTrue(Interval.NegativeInfinity.ContainsAnyInteger());
+            Assert.IsTrue(Interval.NegativeInfinity.IsContainsAnyInteger());
         }
         
         [Test]
         [Repeat(RepeatCount)]
         public void PositiveInfinity_Success()
         {
-            Assert.IsTrue(Interval.PositiveInfinity.ContainsAnyInteger());
+            Assert.IsTrue(Interval.PositiveInfinity.IsContainsAnyInteger());
         }
     }
 }

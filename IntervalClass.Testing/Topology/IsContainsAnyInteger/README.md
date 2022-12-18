@@ -1,4 +1,4 @@
-# Testing 'ContainsAnyInteger' function
+# Testing 'IsContainsAnyInteger' function
 
 ## Designations
 

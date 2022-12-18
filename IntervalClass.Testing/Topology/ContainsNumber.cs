@@ -51,5 +51,71 @@ namespace IntervalClass.Testing.Topology
             
             Assert.IsFalse(interval.Contains(number));
         }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Empty_Failure()
+        {
+            var number = GenerateDoubleNumber();
+            
+            Assert.IsFalse(Interval.Empty.Contains(number));
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Infinity_Success()
+        {
+            var number = GenerateDoubleNumber();
+            
+            Assert.IsTrue(Interval.Infinity.Contains(number));
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void PositiveInfinity_Success()
+        {
+            var number = GenerateDoubleNumber();
+
+            if (number < 0.0)
+                number = -number;
+            
+            Assert.IsTrue(Interval.PositiveInfinity.Contains(number));
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void PositiveInfinity_Failure()
+        {
+            var number = GenerateDoubleNumber();
+
+            if (number > 0.0)
+                number = -number;
+            
+            Assert.IsFalse(Interval.PositiveInfinity.Contains(number));
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void NegativeInfinity_Success()
+        {
+            var number = GenerateDoubleNumber();
+
+            if (number > 0.0)
+                number = -number;
+            
+            Assert.IsTrue(Interval.NegativeInfinity.Contains(number));
+        }
+        
+        [Test]
+        [Repeat(RepeatCount)]
+        public void NegativeInfinity_Failure()
+        {
+            var number = GenerateDoubleNumber();
+
+            if (number < 0.0)
+                number = -number;
+            
+            Assert.IsFalse(Interval.NegativeInfinity.Contains(number));
+        }
     }
 }

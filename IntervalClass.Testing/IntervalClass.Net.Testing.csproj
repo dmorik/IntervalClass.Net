@@ -71,15 +71,12 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IntervalClass\IntervalClass.csproj">
+    <ProjectReference Include="..\IntervalClass\IntervalClass.Net.csproj">
       <Project>{910cd7f3-1a29-4f99-8e5b-0f29214b9dd4}</Project>
-      <Name>IntervalClass</Name>
+      <Name>IntervalClass.Net</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="Functions" />
-    <Folder Include="SetOperations\" />
-  </ItemGroup>
+  <ItemGroup />
   <ItemGroup>
     <Content Include="Create\README.md" />
     <Content Include="Functions\IsContainsAnyInteger\README.md" />

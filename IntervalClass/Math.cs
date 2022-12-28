@@ -5,6 +5,11 @@ namespace IntervalClass
 {
     public readonly partial struct Interval
     {
+        /// <summary>
+        /// Calculate the absolute value of the interval.
+        /// </summary>
+        /// <returns>The absolute value of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Abs()
         {
             if (IsEmpty)
@@ -16,6 +21,11 @@ namespace IntervalClass
             return new Interval(lowerBound, upperBound);
         }
         
+        /// <summary>
+        /// Calculate the square value of the interval.
+        /// </summary>
+        /// <returns>The square value of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Sqr()
         {
             if (IsEmpty)
@@ -31,6 +41,11 @@ namespace IntervalClass
             return new Interval(lowerBound, upperBound);
         }
         
+        /// <summary>
+        /// Calculate the exponent of the interval.
+        /// </summary>
+        /// <returns>The exponent of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Exp()
         {
             if (IsEmpty)
@@ -42,6 +57,11 @@ namespace IntervalClass
             return new Interval(lowerBound, upperBound);
         }
 
+        /// <summary>
+        /// Calculate the sinus of the interval.
+        /// </summary>
+        /// <returns>The sinus of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Sin()
         {
             if (IsEmpty)
@@ -61,6 +81,11 @@ namespace IntervalClass
             return new Interval(lowerBound, upperBound);
         }
 
+        /// <summary>
+        /// Calculate the cosine of the interval.
+        /// </summary>
+        /// <returns>The cosine of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Cos()
         {
             if (IsEmpty)
@@ -69,6 +94,11 @@ namespace IntervalClass
             return (this + Pi2).Sin();
         }
 
+        /// <summary>
+        /// Calculate the tangent of the interval.
+        /// </summary>
+        /// <returns>The tangent of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Tan()
         {
             if (IsEmpty)
@@ -77,6 +107,11 @@ namespace IntervalClass
             return Sin() / Cos();
         }
 
+        /// <summary>
+        /// Calculate the square root of the interval.
+        /// </summary>
+        /// <returns>The square root of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Sqrt()
         {
             if (IsEmpty)
@@ -115,7 +150,7 @@ namespace IntervalClass
             return new Interval(-1.0, 1.0);
         }
 
-        public Interval Arcsin()
+        public Interval ArcSin()
         {
             if (IsEmpty)
                 return Empty;

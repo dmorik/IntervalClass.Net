@@ -92,6 +92,10 @@ namespace IntervalClass
             return result.ToArray();
         }
         
+        /// <summary>
+        /// Returns the interval array consisting of subintervals of the interval.
+        /// </summary>
+        /// <returns>Empty array if the interval is empty. One element array if it is impossible to make dichotomy. Two elements array otherwise.</returns>
         public Interval[] Dichotomy()
         {
             if (IsEmpty)

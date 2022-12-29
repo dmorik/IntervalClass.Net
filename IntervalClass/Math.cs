@@ -1,7 +1,7 @@
 ﻿using System;
 using NextAfter.Net;
 
-namespace IntervalClass
+namespace IntervalClass.Net
 {
     public readonly partial struct Interval
     {
@@ -130,6 +130,11 @@ namespace IntervalClass
             return new Interval(lowerBound, upperBound);
         }
 
+        /// <summary>
+        /// Calculate the sign of the interval.
+        /// </summary>
+        /// <returns>The sign of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval Sign()
         {
             if (IsEmpty)
@@ -153,7 +158,7 @@ namespace IntervalClass
         public Interval ArcSin()
         {
             if (IsEmpty)
-                return Empty;
+                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
 
             if (LowerBound < -1.0
                 || UpperBound > 1.0)

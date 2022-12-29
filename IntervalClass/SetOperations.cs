@@ -1,7 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 
-namespace IntervalClass
+namespace IntervalClass.Net
 {
     public readonly partial struct Interval
     {
@@ -99,7 +99,7 @@ namespace IntervalClass
         public Interval[] Dichotomy()
         {
             if (IsEmpty)
-                return new Interval[] { Empty };
+                return Array.Empty<Interval>();
 
             if (IsPoint())
                 return new Interval[] { this };

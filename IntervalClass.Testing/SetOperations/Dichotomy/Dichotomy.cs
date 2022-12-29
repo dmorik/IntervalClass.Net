@@ -1,4 +1,5 @@
 ﻿using System.Linq;
+using IntervalClass.Net;
 using NextAfter.Net;
 using NUnit.Framework;
 
@@ -11,8 +12,7 @@ namespace IntervalClass.Testing.SetOperations.Dichotomy
         {
             var result = Interval.Empty.Dichotomy();
             
-            Assert.IsTrue(result.Length == 1);
-            Assert.IsTrue(result[0] == Interval.Empty);
+            Assert.IsTrue(result.Length == 0);
         }
 
         [Test]

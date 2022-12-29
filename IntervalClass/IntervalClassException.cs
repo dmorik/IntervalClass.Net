@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IntervalClass
+namespace IntervalClass.Net
 {
     /// <summary>
     /// Represents interval class exception.

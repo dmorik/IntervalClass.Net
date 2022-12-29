@@ -1,6 +1,6 @@
 ﻿using System;
 
-namespace IntervalClass
+namespace IntervalClass.Net
 {
     public readonly partial struct Interval
     {
@@ -111,7 +111,7 @@ namespace IntervalClass
             if (Contains(0.0))
                 return 0.0;
 
-            return Math.Min(Math.Abs(LowerBound), Math.Abs(UpperBound));
+            return Math.Min((sbyte)Math.Abs(LowerBound), (sbyte)Math.Abs(UpperBound));
         }
     }
 }

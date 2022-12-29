@@ -1,4 +1,5 @@
-﻿using NUnit.Framework;
+﻿using IntervalClass.Net;
+using NUnit.Framework;
 
 // ReSharper disable ObjectCreationAsStatement
 

@@ -1,4 +1,4 @@
-﻿namespace IntervalClass
+﻿namespace IntervalClass.Net
 {
     /// <summary>
     /// Implements the interval class.

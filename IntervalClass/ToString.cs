@@ -4,7 +4,7 @@ using System.Globalization;
 using System.Linq;
 using System.Text;
 
-namespace IntervalClass
+namespace IntervalClass.Net
 {
     public readonly partial struct Interval
     {

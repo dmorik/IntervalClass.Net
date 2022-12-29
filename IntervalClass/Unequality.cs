@@ -1,4 +1,4 @@
-﻿namespace IntervalClass
+﻿namespace IntervalClass.Net
 {
     public readonly partial struct Interval
     {

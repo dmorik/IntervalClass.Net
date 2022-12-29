@@ -1,4 +1,4 @@
-﻿namespace IntervalClass
+﻿namespace IntervalClass.Net
 {
     internal static class ErrorMessagesFactory
     {

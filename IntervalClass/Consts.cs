@@ -1,7 +1,7 @@
 ﻿using System;
 using NextAfter.Net;
 
-namespace IntervalClass
+namespace IntervalClass.Net
 {
     public readonly partial struct Interval
     {

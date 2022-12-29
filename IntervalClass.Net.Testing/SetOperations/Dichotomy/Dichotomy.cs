@@ -1,9 +1,8 @@
 ﻿using System.Linq;
-using IntervalClass.Net;
 using NextAfter.Net;
 using NUnit.Framework;
 
-namespace IntervalClass.Testing.SetOperations.Dichotomy
+namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
 {
     internal sealed class Dichotomy : TestBase
     {

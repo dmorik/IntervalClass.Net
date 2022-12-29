@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using IntervalClass.Net;
 using NUnit.Framework;
 
-namespace IntervalClass.Testing.SetOperations.Intersects
+namespace IntervalClass.Net.Testing.SetOperations.Intersects
 {
     [TestFixture]
     internal sealed class Infinity : TestBase

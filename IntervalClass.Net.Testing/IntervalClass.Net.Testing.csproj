@@ -8,8 +8,8 @@
     <ProjectGuid>{3CCFD9FA-E77C-41B7-95AC-D9290388D328}</ProjectGuid>
     <OutputType>Library</OutputType>
     <AppDesignerFolder>Properties</AppDesignerFolder>
-    <RootNamespace>IntervalClass.Testing</RootNamespace>
-    <AssemblyName>IntervalClass.Testing</AssemblyName>
+    <RootNamespace>IntervalClass.Net.Testing</RootNamespace>
+    <AssemblyName>IntervalClass.Net.Testing</AssemblyName>
     <TargetFrameworkVersion>v4.7</TargetFrameworkVersion>
     <FileAlignment>512</FileAlignment>
     <ProjectTypeGuids>{3AC096D0-A1C2-E12C-1390-A8335801FDAB};{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}</ProjectTypeGuids>
@@ -71,12 +71,11 @@
     <None Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
-    <ProjectReference Include="..\IntervalClass\IntervalClass.Net.csproj">
+    <ProjectReference Include="..\IntervalClass.Net\IntervalClass.Net.csproj">
       <Project>{910cd7f3-1a29-4f99-8e5b-0f29214b9dd4}</Project>
       <Name>IntervalClass.Net</Name>
     </ProjectReference>
   </ItemGroup>
-  <ItemGroup />
   <ItemGroup>
     <Content Include="Create\README.md" />
     <Content Include="Functions\IsContainsAnyInteger\README.md" />

@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using IntervalClass.Net;
 using NUnit.Framework;
 
-namespace IntervalClass.Testing.Functions.IsPoint
+namespace IntervalClass.Net.Testing.Functions.IsPoint
 {
     internal sealed class IsPoint : TestBase
     {

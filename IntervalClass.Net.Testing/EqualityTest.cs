@@ -1,8 +1,8 @@
-﻿using IntervalClass.Net;
-using NUnit.Framework;
+﻿using NUnit.Framework;
+
 // ReSharper disable EqualExpressionComparison
 
-namespace IntervalClass.Testing
+namespace IntervalClass.Net.Testing
 {
     [TestFixture]
     internal sealed class EqualityTest : TestBase

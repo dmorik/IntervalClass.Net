@@ -1,10 +1,9 @@
 ﻿using System.Linq;
-using IntervalClass.Net;
 using NUnit.Framework;
 
 // ReSharper disable ObjectCreationAsStatement
 
-namespace IntervalClass.Testing.Create
+namespace IntervalClass.Net.Testing.Create
 {
     [TestFixture]
     internal sealed class FromNumber : TestBase

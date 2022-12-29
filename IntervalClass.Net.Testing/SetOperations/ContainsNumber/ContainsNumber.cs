@@ -1,8 +1,7 @@
 ﻿using System.Linq;
-using IntervalClass.Net;
 using NUnit.Framework;
 
-namespace IntervalClass.Testing.SetOperations
+namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
 {
     internal sealed class ContainsNumber : TestBase
     {

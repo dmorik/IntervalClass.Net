@@ -1,7 +1,6 @@
-﻿using IntervalClass.Net;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace IntervalClass.Testing.Create
+namespace IntervalClass.Net.Testing.Create
 {
     [TestFixture]
     internal sealed class Default : TestBase

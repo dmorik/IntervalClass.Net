@@ -1,9 +1,8 @@
-﻿using IntervalClass.Net;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
 // ReSharper disable ObjectCreationAsStatement
 
-namespace IntervalClass.Testing.Create
+namespace IntervalClass.Net.Testing.Create
 {
     [TestFixture]
     internal sealed class FromNan : TestBase

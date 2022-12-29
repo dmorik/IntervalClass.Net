@@ -1,7 +1,6 @@
-﻿using IntervalClass.Net;
-using NUnit.Framework;
+﻿using NUnit.Framework;
 
-namespace IntervalClass.Testing.Functions.IsContainsAnyInteger
+namespace IntervalClass.Net.Testing.Functions.IsContainsAnyInteger
 {
     internal sealed class ContainsAnyInteger : TestBase
     {

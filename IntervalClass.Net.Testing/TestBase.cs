@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using IntervalClass.Net;
 
-namespace IntervalClass.Testing
+namespace IntervalClass.Net.Testing
 {
     internal class TestBase
     {

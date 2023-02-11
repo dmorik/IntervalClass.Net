@@ -1,7 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using IntervalClass.Net;
 
 namespace IntervalClass.Net.Testing
 {
@@ -35,7 +34,7 @@ namespace IntervalClass.Net.Testing
 
             var result = new List<double>();
 
-            foreach (var number in Enumerable.Range(0, count))
+            foreach (var _ in Enumerable.Range(0, count))
             {
                 var candidate = GenerateDoubleNumber();
                 
@@ -48,7 +47,7 @@ namespace IntervalClass.Net.Testing
             return result.ToArray();
         }
 
-        public static Interval GenerateInterval()
+        protected static Interval GenerateInterval()
         {
             var orderedNumbers = GenerateDoubleNumbers(2)
                 .OrderBy(x => x)

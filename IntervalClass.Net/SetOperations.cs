@@ -72,6 +72,11 @@ namespace IntervalClass.Net
             return Contains(interval.LowerBound) && Contains(interval.UpperBound);
         }
 
+        /// <summary>
+        /// Returns the set of intervals excluding the specified one.
+        /// </summary>
+        /// <param name="interval">The specified interval.</param>
+        /// <returns></returns>
         public Interval[] Except(Interval interval)
         {
             var intersection = Intersect(interval);

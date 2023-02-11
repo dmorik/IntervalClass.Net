@@ -155,6 +155,11 @@ namespace IntervalClass.Net
             return new Interval(-1.0, 1.0);
         }
 
+        /// <summary>
+        /// Calculate the arcsine of the interval.
+        /// </summary>
+        /// <returns>The arcsine of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval ArcSin()
         {
             if (IsEmpty)
@@ -172,6 +177,11 @@ namespace IntervalClass.Net
             return new Interval(lowerBound, upperBound);
         }
 
+        /// <summary>
+        /// Calculate the integer power of the interval.
+        /// </summary>
+        /// <returns>The integer power of the interval.</returns>
+        /// <exception cref="IntervalClassException">Argument is the empty interval.</exception>
         public Interval PowInt(int power)
         {
             if (IsEmpty)

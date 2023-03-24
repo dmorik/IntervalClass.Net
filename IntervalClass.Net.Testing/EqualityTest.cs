@@ -1,4 +1,7 @@
-﻿using NUnit.Framework;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
+using NUnit.Framework;
 
 // ReSharper disable EqualExpressionComparison
 
@@ -7,7 +10,7 @@ namespace IntervalClass.Net.Testing
     [TestFixture]
     internal sealed class EqualityTest : TestBase
     {
-        private void TestEqualIntervals(Interval firstInterval, Interval secondInterval)
+        private static void TestEqualIntervals(Interval firstInterval, Interval secondInterval)
         {
             Assert.IsTrue(firstInterval.Equals(firstInterval));
             Assert.IsTrue(firstInterval.Equals(secondInterval));
@@ -75,7 +78,8 @@ namespace IntervalClass.Net.Testing
         [Repeat(RepeatCount)]
         public void Point_Equals_SamePoint()
         {
-            var interval = GenerateInterval();
+            var number = GenerateDoubleNumber();
+            var interval = new Interval(number);
             var anotherInterval = new Interval(interval.LowerBound, interval.UpperBound);
             
             TestEqualIntervals(interval, anotherInterval);

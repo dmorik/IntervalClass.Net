@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
 using NextAfter.Net;
 using NUnit.Framework;
 
@@ -37,7 +39,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
         public void PositiveInfinity_Failure()
         {
             var error = ShouldCatchIntervalClassException(()
-                => Interval.NegativeInfinity.Dichotomy());
+                => Interval.PositiveInfinity.Dichotomy());
             
             Assert.IsTrue(error);
         }
@@ -58,17 +60,12 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
         [Repeat(RepeatCount)]
         public void Common_Success()
         {
-            var orderedNumbers = GenerateDoubleNumbers(2)
-                .OrderBy(x => x)
-                .ToArray();
-            var lowerBound = orderedNumbers[0];
-            var upperBound = orderedNumbers[1];
-            var interval = new Interval(lowerBound, upperBound);
+            var interval = GenerateInterval();
             var dichotomyResult = interval.Dichotomy();
             
             Assert.IsTrue(dichotomyResult.Length == 2);
-            Assert.IsTrue(dichotomyResult[0].LowerBound.Equals(lowerBound));
-            Assert.IsTrue(dichotomyResult[1].UpperBound.Equals(upperBound));
+            Assert.IsTrue(dichotomyResult[0].LowerBound.Equals(interval.LowerBound));
+            Assert.IsTrue(dichotomyResult[1].UpperBound.Equals(interval.UpperBound));
             Assert.IsTrue(dichotomyResult[0].UpperBound.Equals(dichotomyResult[1].LowerBound));
         }
         

@@ -1,4 +1,7 @@
-﻿using System.Linq;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
+using System.Linq;
 using NUnit.Framework;
 
 namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
@@ -58,10 +61,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
         [Repeat(RepeatCount)]
         public void Empty_Failure()
         {
-            var numbers = GenerateDoubleNumbers(2)
-                .OrderBy(x => x)
-                .ToArray();
-            var interval = new Interval(numbers[0], numbers[1]);
+            var interval = GenerateInterval();
             
             Assert.IsFalse(interval.Contains(Interval.Empty));
             Assert.IsFalse(Interval.Empty.Contains(interval));

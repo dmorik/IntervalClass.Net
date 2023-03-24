@@ -1,32 +1,31 @@
-﻿using NUnit.Framework;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
+using NUnit.Framework;
 
 namespace IntervalClass.Net.Testing.Functions.IsContainsAnyInteger
 {
     internal sealed class ContainsAnyInteger : TestBase
     {
         [Test]
-        [Repeat(RepeatCount)]
         public void Empty_Failure()
         {
             Assert.IsFalse(Interval.Empty.IsContainsAnyInteger());
         }
         
         [Test]
-        [Repeat(RepeatCount)]
         public void Infinity_Success()
         {
             Assert.IsTrue(Interval.Infinity.IsContainsAnyInteger());
         }
         
         [Test]
-        [Repeat(RepeatCount)]
         public void NegativeInfinity_Success()
         {
             Assert.IsTrue(Interval.NegativeInfinity.IsContainsAnyInteger());
         }
         
         [Test]
-        [Repeat(RepeatCount)]
         public void PositiveInfinity_Success()
         {
             Assert.IsTrue(Interval.PositiveInfinity.IsContainsAnyInteger());

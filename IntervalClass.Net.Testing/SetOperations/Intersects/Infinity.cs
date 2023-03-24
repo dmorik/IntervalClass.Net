@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
 using NUnit.Framework;
 
 namespace IntervalClass.Net.Testing.SetOperations.Intersects
@@ -26,11 +28,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Infinity_Common()
         {
-            var orderedNumbers = GenerateDoubleNumbers(2)
-                .OrderBy(x => x)
-                .ToArray();
-
-            var interval = new Interval(orderedNumbers[0], orderedNumbers[1]);
+            var interval = GenerateInterval();
             var intersection = Interval.Infinity.Intersect(interval);
             
             Assert.IsTrue(intersection == interval);

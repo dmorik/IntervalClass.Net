@@ -1,10 +1,16 @@
-﻿namespace IntervalClass.Net
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
+namespace IntervalClass.Net
 {
     public readonly partial struct Interval
     {
         /// <inheritdoc/>
         public override bool Equals(object obj)
         {
+            if (obj is double doubleValue)
+                return doubleValue.Equals(LowerBound) || doubleValue.Equals(UpperBound);
+
             if (!(obj is Interval anotherInterval))
                 return false;
 
@@ -46,7 +52,7 @@
         /// <returns>True if the first interval unequals the second interval, False - otherwise.</returns>
         public static bool operator !=(Interval firstInterval, Interval secondInterval)
         {
-            return !(firstInterval == secondInterval);
+            return !firstInterval.Equals(secondInterval);
         }
 
         /// <summary>
@@ -57,11 +63,7 @@
         /// <returns>True if the interval equals the number, False - otherwise.</returns>
         public static bool operator ==(Interval interval, double number)
         {
-            if (interval.IsEmpty)
-                return false;
-            
-            return interval.LowerBound.Equals(number)
-                && interval.UpperBound.Equals(number);
+            return interval.Equals(number);
         }
 
         /// <summary>
@@ -72,7 +74,7 @@
         /// <returns>True if the interval unequals the number, False - otherwise.</returns>
         public static bool operator !=(Interval interval, double number)
         {
-            return !(interval == number);
+            return !interval.Equals(number);
         }
 
         /// <summary>
@@ -83,7 +85,7 @@
         /// <returns>True if the interval equals the number, False - otherwise.</returns>
         public static bool operator ==(double number, Interval interval)
         {
-            return interval == number;
+            return interval.Equals(number);
         }
 
         /// <summary>
@@ -94,7 +96,7 @@
         /// <returns>True if the interval unequals the number, False - otherwise.</returns>
         public static bool operator !=(double number, Interval interval)
         {
-            return !(interval == number);
+            return !interval.Equals(number);
         }
     }
 }

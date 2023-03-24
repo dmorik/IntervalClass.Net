@@ -1,4 +1,6 @@
-﻿using System.Linq;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
 using NUnit.Framework;
 
 namespace IntervalClass.Net.Testing.Functions.IsPoint
@@ -43,10 +45,7 @@ namespace IntervalClass.Net.Testing.Functions.IsPoint
         [Repeat(RepeatCount)]
         public void Common_Failure()
         {
-            var numbers = GenerateDoubleNumbers(2)
-                .OrderBy(x => x)
-                .ToArray();
-            var interval = new Interval(numbers[0], numbers[1]);
+            var interval = GenerateInterval();
  
             Assert.IsFalse(interval.IsPoint());
         }

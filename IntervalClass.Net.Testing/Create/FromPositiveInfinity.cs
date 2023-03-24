@@ -1,4 +1,6 @@
-﻿using IntervalClass.Net;
+﻿// This is a personal academic project. Dear PVS-Studio, please check it.
+// PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
+
 using NUnit.Framework;
 
 // ReSharper disable ObjectCreationAsStatement
@@ -21,7 +23,7 @@ namespace IntervalClass.Net.Testing.Create
         public void PositiveInfinity_PositiveInfinity_Failure()
         {
             var error = ShouldCatchIntervalClassException(()
-                => new Interval(double.PositiveInfinity));
+                => new Interval(double.PositiveInfinity, double.PositiveInfinity));
 
             Assert.IsTrue(error);
         }

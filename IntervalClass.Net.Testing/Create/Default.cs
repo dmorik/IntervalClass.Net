@@ -11,9 +11,12 @@ namespace IntervalClass.Net.Testing.Create
         {
             var createdInterval = new Interval();
 
-            Assert.IsTrue(createdInterval == Interval.Empty);
-            Assert.IsTrue(double.IsNaN(createdInterval.LowerBound));
-            Assert.IsTrue(double.IsNaN(createdInterval.UpperBound));
+            Assert.Multiple(() =>
+            {
+                Assert.That(createdInterval, Is.EqualTo(Interval.Empty));
+                Assert.That(double.IsNaN(createdInterval.LowerBound), Is.True);
+                Assert.That(double.IsNaN(createdInterval.UpperBound), Is.True);
+            });
         }
     }
 }

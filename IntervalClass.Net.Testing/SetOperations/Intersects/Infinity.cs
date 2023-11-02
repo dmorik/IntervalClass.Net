@@ -11,7 +11,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         {
             var intersection = Interval.Infinity.Intersect(Interval.Infinity);
             
-            Assert.IsTrue(intersection == Interval.Infinity);
+            Assert.That(intersection, Is.EqualTo(Interval.Infinity));
         }
         
         [Test]
@@ -19,7 +19,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         {
             var intersection = Interval.Infinity.Intersect(Interval.Empty);
             
-            Assert.IsTrue(intersection == Interval.Empty);
+            Assert.That(intersection, Is.EqualTo(Interval.Empty));
         }
         
         [Test]
@@ -29,7 +29,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
             var interval = GenerateInterval();
             var intersection = Interval.Infinity.Intersect(interval);
             
-            Assert.IsTrue(intersection == interval);
+            Assert.That(intersection, Is.EqualTo(interval));
         }
     }
 }

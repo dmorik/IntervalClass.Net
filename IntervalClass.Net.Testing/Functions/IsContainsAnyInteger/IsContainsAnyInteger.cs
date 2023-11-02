@@ -8,25 +8,25 @@ namespace IntervalClass.Net.Testing.Functions.IsContainsAnyInteger
         [Test]
         public void Empty_Failure()
         {
-            Assert.IsFalse(Interval.Empty.IsContainsAnyInteger());
+            Assert.That(Interval.Empty.IsContainsAnyInteger(), Is.False);
         }
         
         [Test]
         public void Infinity_Success()
         {
-            Assert.IsTrue(Interval.Infinity.IsContainsAnyInteger());
+            Assert.That(Interval.Infinity.IsContainsAnyInteger(), Is.True);
         }
         
         [Test]
         public void NegativeInfinity_Success()
         {
-            Assert.IsTrue(Interval.NegativeInfinity.IsContainsAnyInteger());
+            Assert.That(Interval.NegativeInfinity.IsContainsAnyInteger(), Is.True);
         }
         
         [Test]
         public void PositiveInfinity_Success()
         {
-            Assert.IsTrue(Interval.PositiveInfinity.IsContainsAnyInteger());
+            Assert.That(Interval.PositiveInfinity.IsContainsAnyInteger(), Is.True);
         }
 
         [Test]
@@ -36,7 +36,7 @@ namespace IntervalClass.Net.Testing.Functions.IsContainsAnyInteger
             var integer = GenerateIntNumber();
             var interval = new Interval(integer);
 
-            Assert.IsTrue(interval.IsContainsAnyInteger());
+            Assert.That(interval.IsContainsAnyInteger(), Is.True);
         }
     }
 }

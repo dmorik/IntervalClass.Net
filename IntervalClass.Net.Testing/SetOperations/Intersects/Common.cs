@@ -21,13 +21,21 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
 
             var intersection = firstInterval.Intersect(secondInterval);
             
-            Assert.IsTrue(intersection == orderedNumbers[1]);
-            
+            Assert.Multiple(() =>
+            {
+                Assert.That(intersection.LowerBound, Is.EqualTo(orderedNumbers[1]));
+                Assert.That(intersection.UpperBound, Is.EqualTo(orderedNumbers[1]));
+            });
+
             intersection = secondInterval.Intersect(firstInterval);
             
-            Assert.IsTrue(intersection == orderedNumbers[1]);
+            Assert.Multiple(() =>
+            {
+                Assert.That(intersection.LowerBound, Is.EqualTo(orderedNumbers[1]));
+                Assert.That(intersection.UpperBound, Is.EqualTo(orderedNumbers[1]));
+            });
         }
-        
+
         [Test]
         [Repeat(RepeatCount)]
         public void Common_NotIntersectingCommon()
@@ -41,11 +49,11 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
 
             var intersection = firstInterval.Intersect(secondInterval);
             
-            Assert.IsTrue(intersection == Interval.Empty);
+            Assert.That(intersection, Is.EqualTo(Interval.Empty));
             
             intersection = secondInterval.Intersect(firstInterval);
             
-            Assert.IsTrue(intersection == Interval.Empty);
+            Assert.That(intersection, Is.EqualTo(Interval.Empty));
         }
         
         [Test]
@@ -61,11 +69,11 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
 
             var intersection = firstInterval.Intersect(secondInterval);
             
-            Assert.IsTrue(intersection == secondInterval);
+            Assert.That(intersection, Is.EqualTo(secondInterval));
             
             intersection = secondInterval.Intersect(firstInterval);
             
-            Assert.IsTrue(intersection == secondInterval);
+            Assert.That(intersection, Is.EqualTo(secondInterval));
         }
         
         [Test]
@@ -75,7 +83,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
             var interval = GenerateInterval();
             var intersection = interval.Intersect(interval);
             
-            Assert.IsTrue(intersection == interval);
+            Assert.That(intersection, Is.EqualTo(interval));
         }
         
         [Test]
@@ -91,11 +99,11 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
             var shouldIntersection = new Interval(orderedNumbers[1], orderedNumbers[2]);
             var intersection = firstInterval.Intersect(secondInterval);
             
-            Assert.IsTrue(intersection == shouldIntersection);
+            Assert.That(intersection, Is.EqualTo(shouldIntersection));
             
             intersection = secondInterval.Intersect(firstInterval);
             
-            Assert.IsTrue(intersection == shouldIntersection);
+            Assert.That(intersection, Is.EqualTo(shouldIntersection));
         }
         
         [Test]
@@ -105,7 +113,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
             var interval = GenerateInterval();
             var intersection = interval.Intersect(Interval.Empty);
             
-            Assert.IsTrue(intersection == Interval.Empty);
+            Assert.That(intersection, Is.EqualTo(Interval.Empty));
         }
         
         [Test]
@@ -115,7 +123,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
             var interval = GenerateInterval();
             var intersection = interval.Intersect(Interval.Infinity);
             
-            Assert.IsTrue(intersection == interval);
+            Assert.That(intersection, Is.EqualTo(interval));
         }
         
         [Test]
@@ -128,7 +136,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
                 ? Interval.Empty
                 : new Interval(interval.LowerBound, interval.UpperBound > 0.0 ? 0.0 : interval.UpperBound);
             
-            Assert.IsTrue(intersection == shouldIntersection);
+            Assert.That(intersection, Is.EqualTo(shouldIntersection));
         }
         
         [Test]
@@ -141,7 +149,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
                 ? Interval.Empty
                 : new Interval(interval.LowerBound < 0.0 ? 0.0 : interval.LowerBound, interval.UpperBound);
             
-            Assert.IsTrue(intersection == shouldIntersection);
+            Assert.That(intersection, Is.EqualTo(shouldIntersection));
         }
     }
 }

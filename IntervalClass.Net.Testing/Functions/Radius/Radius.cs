@@ -13,7 +13,7 @@ namespace IntervalClass.Net.Testing.Functions.Width
             var interval = (Interval)number;
             var radius = interval.Radius();
             
-            Assert.IsTrue(radius.Contains(0.0));
+            Assert.That(radius.Contains(0.0), Is.True);
         }
 
         [Test]
@@ -22,7 +22,7 @@ namespace IntervalClass.Net.Testing.Functions.Width
             var error = ShouldCatchIntervalClassException(()
                 => Interval.Infinity.Radius());
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
 
         [Test]
@@ -31,7 +31,7 @@ namespace IntervalClass.Net.Testing.Functions.Width
             var error = ShouldCatchIntervalClassException(()
                 => Interval.NegativeInfinity.Radius());
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
 
         [Test]
@@ -40,7 +40,7 @@ namespace IntervalClass.Net.Testing.Functions.Width
             var error = ShouldCatchIntervalClassException(()
                 => Interval.PositiveInfinity.Radius());
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
 
         [Test]
@@ -50,7 +50,7 @@ namespace IntervalClass.Net.Testing.Functions.Width
             var interval = GenerateInterval();
             var width = (interval.UpperBound - interval.LowerBound) * 0.5;
 
-            Assert.IsTrue(interval.Radius().Contains(width));
+            Assert.That(interval.Radius().Contains(width), Is.True);
         }
 
         [Test]
@@ -59,7 +59,7 @@ namespace IntervalClass.Net.Testing.Functions.Width
             var error = ShouldCatchIntervalClassException(()
                 => Interval.Empty.Radius());
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
     }
 }

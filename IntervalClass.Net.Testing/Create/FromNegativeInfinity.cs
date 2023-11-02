@@ -15,7 +15,7 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(()
                 => new Interval(double.NegativeInfinity));
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
@@ -24,17 +24,20 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(()
                 => new Interval(double.NegativeInfinity, double.NegativeInfinity));
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
         public void NegativeInfinity_PositiveInfinity_Success()
         {
             var createdInterval = new Interval(double.NegativeInfinity, double.PositiveInfinity);
-
-            Assert.IsTrue(createdInterval != Interval.Empty);
-            Assert.IsTrue(double.IsNegativeInfinity(createdInterval.LowerBound));
-            Assert.IsTrue(double.IsPositiveInfinity(createdInterval.UpperBound));
+            
+            Assert.Multiple(() =>
+            {
+                Assert.That(createdInterval, Is.Not.EqualTo(Interval.Empty));
+                Assert.That(double.IsNegativeInfinity(createdInterval.LowerBound), Is.True);
+                Assert.That(double.IsPositiveInfinity(createdInterval.UpperBound), Is.True);
+            });
         }
 
         [Test]
@@ -43,12 +46,15 @@ namespace IntervalClass.Net.Testing.Create
         {
             var number = GenerateDoubleNumber();
             var createdInterval = new Interval(double.NegativeInfinity, number);
-
-            Assert.IsTrue(createdInterval != Interval.Empty);
-            Assert.IsTrue(double.IsNegativeInfinity(createdInterval.LowerBound));
-            Assert.IsTrue(createdInterval.UpperBound.Equals(number));
+            
+            Assert.Multiple(() =>
+            {
+                Assert.That(createdInterval, Is.Not.EqualTo(Interval.Empty));
+                Assert.That(double.IsNegativeInfinity(createdInterval.LowerBound), Is.True);
+                Assert.That(createdInterval.UpperBound, Is.EqualTo(number));
+            });
         }
-        
+
         [Test]
         [Repeat(RepeatCount)]
         public void NegativeInfinity_NaN_Failure()
@@ -56,7 +62,7 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(() 
                 => new Interval(double.NegativeInfinity, double.NaN));
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
     }
 }

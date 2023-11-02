@@ -14,7 +14,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
             var number = GenerateDoubleNumber();
             var interval = (Interval)number;
             
-            Assert.IsTrue(interval.Contains(interval));
+            Assert.That(interval.Contains(interval), Is.True);
         }
         
         [Test]
@@ -26,7 +26,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
             var anotherNumber = GenerateDoubleNumber();
             var anotherInterval = (Interval)anotherNumber;
             
-            Assert.IsFalse(interval.Contains(anotherInterval));
+            Assert.That(interval.Contains(anotherInterval), Is.False);
         }
 
         [Test]
@@ -39,7 +39,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
             var outerInterval = new Interval(numbers[0], numbers[3]);
             var innerInterval = new Interval(numbers[1], numbers[2]);
             
-            Assert.IsTrue(outerInterval.Contains(innerInterval));
+            Assert.That(outerInterval.Contains(innerInterval), Is.True);
         }
         
         [Test]
@@ -51,9 +51,11 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
                 .ToArray();
             var interval = new Interval(numbers[0], numbers[2]);
             var anotherInterval = new Interval(numbers[1], numbers[3]);
-            
-            Assert.IsFalse(interval.Contains(anotherInterval));
-            Assert.IsFalse(anotherInterval.Contains(interval));
+            Assert.Multiple(() =>
+            {
+                Assert.That(interval.Contains(anotherInterval), Is.False);
+                Assert.That(anotherInterval.Contains(interval), Is.False);
+            });
         }
 
         [Test]
@@ -61,9 +63,11 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
         public void Empty_Failure()
         {
             var interval = GenerateInterval();
-            
-            Assert.IsFalse(interval.Contains(Interval.Empty));
-            Assert.IsFalse(Interval.Empty.Contains(interval));
+            Assert.Multiple(() =>
+            {
+                Assert.That(interval.Contains(Interval.Empty), Is.False);
+                Assert.That(Interval.Empty.Contains(interval), Is.False);
+            });
         }
     }
 }

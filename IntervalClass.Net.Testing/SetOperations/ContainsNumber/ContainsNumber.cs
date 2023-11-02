@@ -14,7 +14,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
             var number = GenerateDoubleNumber();
             var interval = (Interval)number;
             
-            Assert.IsTrue(interval.Contains(number));
+            Assert.That(interval.Contains(number), Is.True);
         }
         
         [Test]
@@ -25,7 +25,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
             var interval = (Interval)number;
             var anotherNumber = GenerateDoubleNumber();
             
-            Assert.IsFalse(interval.Contains(anotherNumber));
+            Assert.That(interval.Contains(anotherNumber), Is.False);
         }
 
         [Test]
@@ -38,7 +38,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
             var interval = new Interval(numbers[0], numbers[2]);
             var number = numbers[1];
             
-            Assert.IsTrue(interval.Contains(number));
+            Assert.That(interval.Contains(number), Is.True);
         }
         
         [Test]
@@ -51,7 +51,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
             var interval = new Interval(numbers[0], numbers[1]);
             var number = numbers[2];
             
-            Assert.IsFalse(interval.Contains(number));
+            Assert.That(interval.Contains(number), Is.False);
         }
         
         [Test]
@@ -60,7 +60,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         {
             var number = GenerateDoubleNumber();
             
-            Assert.IsFalse(Interval.Empty.Contains(number));
+            Assert.That(Interval.Empty.Contains(number), Is.False);
         }
         
         [Test]
@@ -69,7 +69,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         {
             var number = GenerateDoubleNumber();
             
-            Assert.IsTrue(Interval.Infinity.Contains(number));
+            Assert.That(Interval.Infinity.Contains(number), Is.True);
         }
         
         [Test]
@@ -81,7 +81,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
             if (number < 0.0)
                 number = -number;
             
-            Assert.IsTrue(Interval.PositiveInfinity.Contains(number));
+            Assert.That(Interval.PositiveInfinity.Contains(number), Is.True);
         }
         
         [Test]
@@ -93,7 +93,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
             if (number > 0.0)
                 number = -number;
             
-            Assert.IsFalse(Interval.PositiveInfinity.Contains(number));
+            Assert.That(Interval.PositiveInfinity.Contains(number), Is.False);
         }
         
         [Test]
@@ -105,7 +105,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
             if (number > 0.0)
                 number = -number;
             
-            Assert.IsTrue(Interval.NegativeInfinity.Contains(number));
+            Assert.That(Interval.NegativeInfinity.Contains(number), Is.True);
         }
         
         [Test]
@@ -117,7 +117,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
             if (number < 0.0)
                 number = -number;
             
-            Assert.IsFalse(Interval.NegativeInfinity.Contains(number));
+            Assert.That(Interval.NegativeInfinity.Contains(number), Is.False);
         }
     }
 }

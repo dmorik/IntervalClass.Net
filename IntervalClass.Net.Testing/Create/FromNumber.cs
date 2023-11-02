@@ -16,10 +16,13 @@ namespace IntervalClass.Net.Testing.Create
         {
             var number = GenerateDoubleNumber();
             var createdInterval = new Interval(number);
-
-            Assert.IsTrue(createdInterval != Interval.Empty);
-            Assert.IsTrue(createdInterval.LowerBound.Equals(number));
-            Assert.IsTrue(createdInterval.UpperBound.Equals(number));
+            
+            Assert.Multiple(() =>
+            {
+                Assert.That(createdInterval, Is.Not.EqualTo(Interval.Empty));
+                Assert.That(createdInterval.LowerBound, Is.EqualTo(number));
+                Assert.That(createdInterval.UpperBound, Is.EqualTo(number));
+            });
         }
 
         [Test]
@@ -32,10 +35,13 @@ namespace IntervalClass.Net.Testing.Create
             var lowerBound = orderedNumbers[0];
             var upperBound = orderedNumbers[1];
             var createdInterval = new Interval(lowerBound, upperBound);
-
-            Assert.IsTrue(createdInterval != Interval.Empty);
-            Assert.IsTrue(createdInterval.LowerBound.Equals(lowerBound));
-            Assert.IsTrue(createdInterval.UpperBound.Equals(upperBound));
+            
+            Assert.Multiple(() =>
+            {
+                Assert.That(createdInterval, Is.Not.EqualTo(Interval.Empty));
+                Assert.That(createdInterval.LowerBound, Is.EqualTo(lowerBound));
+                Assert.That(createdInterval.UpperBound, Is.EqualTo(upperBound));
+            });
         }
 
         [Test]
@@ -49,7 +55,7 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(() 
                 => new Interval(reverseOrderedNumbers[0], reverseOrderedNumbers[1]));
             
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
 
         [Test]
@@ -60,7 +66,7 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(()
                 => new Interval(number, double.NaN));
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
@@ -69,12 +75,15 @@ namespace IntervalClass.Net.Testing.Create
         {
             var number = GenerateDoubleNumber();
             var createdInterval = new Interval(number, double.PositiveInfinity);
-
-            Assert.IsTrue(createdInterval != Interval.Empty);
-            Assert.IsTrue(createdInterval.LowerBound.Equals(number));
-            Assert.IsTrue(double.IsPositiveInfinity(createdInterval.UpperBound));
+            
+            Assert.Multiple(() =>
+            {
+                Assert.That(createdInterval, Is.Not.EqualTo(Interval.Empty));
+                Assert.That(createdInterval.LowerBound, Is.EqualTo(number));
+                Assert.That(double.IsPositiveInfinity(createdInterval.UpperBound), Is.True);
+            });
         }
-        
+
         [Test]
         [Repeat(RepeatCount)]
         public void Number_NegativeInfinity_Failure()
@@ -83,7 +92,7 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(() 
                 => new Interval(number, double.NegativeInfinity));
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
     }
 }

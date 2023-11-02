@@ -12,7 +12,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
         {
             var result = Interval.Empty.Dichotomy();
             
-            Assert.IsTrue(result.Length == 0);
+            Assert.That(result, Is.Empty);
         }
 
         [Test]
@@ -21,7 +21,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
             var error = ShouldCatchIntervalClassException(()
                => Interval.Infinity.Dichotomy());
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
@@ -30,7 +30,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
             var error = ShouldCatchIntervalClassException(()
                 => Interval.NegativeInfinity.Dichotomy());
             
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
@@ -39,7 +39,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
             var error = ShouldCatchIntervalClassException(()
                 => Interval.PositiveInfinity.Dichotomy());
             
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
 
         [Test]
@@ -50,8 +50,8 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
             var interval = new Interval(number);
             var dichotomyResult = interval.Dichotomy();
             
-            Assert.IsTrue(dichotomyResult.Length == 1);
-            Assert.IsTrue(dichotomyResult[0] == interval);
+            Assert.That(dichotomyResult, Has.Length.EqualTo(1));
+            Assert.That(dichotomyResult[0], Is.EqualTo(interval));
         }
         
         [Test]
@@ -59,14 +59,17 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
         public void Common_Success()
         {
             var interval = GenerateInterval();
-            var dichotomyResult = interval.Dichotomy();
+            var dichotomyResult = interval.Dichotomy();           
             
-            Assert.IsTrue(dichotomyResult.Length == 2);
-            Assert.IsTrue(dichotomyResult[0].LowerBound.Equals(interval.LowerBound));
-            Assert.IsTrue(dichotomyResult[1].UpperBound.Equals(interval.UpperBound));
-            Assert.IsTrue(dichotomyResult[0].UpperBound.Equals(dichotomyResult[1].LowerBound));
+            Assert.Multiple(() =>
+            {
+                Assert.That(dichotomyResult, Has.Length.EqualTo(2));
+                Assert.That(dichotomyResult[0].LowerBound, Is.EqualTo(interval.LowerBound));
+                Assert.That(dichotomyResult[1].UpperBound, Is.EqualTo(interval.UpperBound));
+                Assert.That(dichotomyResult[0].UpperBound, Is.EqualTo(dichotomyResult[1].LowerBound));
+            });
         }
-        
+
         [Test]
         [Repeat(RepeatCount)]
         public void TwoNeighboursDoubleInterval_Success()
@@ -76,8 +79,8 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
             var interval = new Interval(number, nextNumber);
             var dichotomyResult = interval.Dichotomy();
             
-            Assert.IsTrue(dichotomyResult.Length == 1);
-            Assert.IsTrue(dichotomyResult[0].Equals(interval));
+            Assert.That(dichotomyResult, Has.Length.EqualTo(1));
+            Assert.That(dichotomyResult[0], Is.EqualTo(interval));
         }
     }
 }

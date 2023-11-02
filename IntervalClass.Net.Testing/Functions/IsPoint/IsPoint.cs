@@ -12,31 +12,31 @@ namespace IntervalClass.Net.Testing.Functions.IsPoint
             var number = GenerateDoubleNumber();
             var interval = (Interval)number;
             
-            Assert.IsTrue(interval.IsPoint());
+            Assert.That(interval.IsPoint(), Is.True);
         }
 
         [Test]
         public void Empty_Failure()
         {
-            Assert.IsFalse(Interval.Empty.IsPoint());
+            Assert.That(Interval.Empty.IsPoint(), Is.False);
         }
         
         [Test]
         public void Infinity_Failure()
         {
-            Assert.IsFalse(Interval.Infinity.IsPoint());
+            Assert.That(Interval.Infinity.IsPoint(), Is.False);
         }
         
         [Test]
         public void NegativeInfinity_Failure()
         {
-            Assert.IsFalse(Interval.Infinity.IsPoint());
+            Assert.That(Interval.Infinity.IsPoint(), Is.False);
         }
         
         [Test]
         public void PositiveInfinity_Failure()
         {
-            Assert.IsFalse(Interval.Infinity.IsPoint());
+            Assert.That(Interval.Infinity.IsPoint(), Is.False);
         }
 
         [Test]
@@ -45,7 +45,7 @@ namespace IntervalClass.Net.Testing.Functions.IsPoint
         {
             var interval = GenerateInterval();
  
-            Assert.IsFalse(interval.IsPoint());
+            Assert.That(interval.IsPoint(), Is.False);
         }
     }
 }

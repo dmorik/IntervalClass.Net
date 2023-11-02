@@ -11,22 +11,37 @@ namespace IntervalClass.Net.Testing
     {
         private static void TestEqualIntervals(Interval firstInterval, Interval secondInterval)
         {
-            Assert.IsTrue(firstInterval.Equals(firstInterval));
-            Assert.IsTrue(firstInterval.Equals(secondInterval));
-            Assert.IsTrue(secondInterval.Equals(firstInterval));
-            Assert.IsTrue(secondInterval.Equals(secondInterval));
-            
-            Assert.IsTrue(firstInterval == firstInterval);
-            Assert.IsTrue(firstInterval == secondInterval);
-            Assert.IsTrue(secondInterval == firstInterval);
-            Assert.IsTrue(secondInterval == secondInterval);
-            
-            Assert.IsFalse(firstInterval != firstInterval);
-            Assert.IsFalse(firstInterval != secondInterval);
-            Assert.IsFalse(secondInterval != firstInterval);
-            Assert.IsFalse(secondInterval != secondInterval);
+            Assert.That(firstInterval, Is.EqualTo(firstInterval));
+            Assert.Multiple(() =>
+            {
+                Assert.That(firstInterval, Is.EqualTo(secondInterval));
+                Assert.That(secondInterval, Is.EqualTo(firstInterval));
+            });
+            Assert.Multiple(() =>
+            {
+                Assert.That(secondInterval, Is.EqualTo(secondInterval));
+
+                Assert.That(firstInterval, Is.EqualTo(firstInterval));
+            });
+            Assert.Multiple(() =>
+            {
+                Assert.That(firstInterval, Is.EqualTo(secondInterval));
+                Assert.That(secondInterval, Is.EqualTo(firstInterval));
+            });
+            Assert.Multiple(() =>
+            {
+                Assert.That(secondInterval, Is.EqualTo(secondInterval));
+
+                Assert.That(firstInterval, Is.EqualTo(firstInterval));
+            });
+            Assert.Multiple(() =>
+            {
+                Assert.That(firstInterval, Is.EqualTo(secondInterval));
+                Assert.That(secondInterval, Is.EqualTo(firstInterval));
+            });
+            Assert.That(secondInterval, Is.EqualTo(secondInterval));
         }
-        
+
         [Test]
         public void Empty_Equals_Empty() 
         {

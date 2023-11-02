@@ -13,7 +13,7 @@ namespace IntervalClass.Net.Testing.Functions.Middle
             var interval = (Interval)number;
             var middle = interval.Middle();
             
-            Assert.IsTrue(middle == interval);
+            Assert.That(middle, Is.EqualTo(interval));
         }
 
         [Test]
@@ -24,7 +24,7 @@ namespace IntervalClass.Net.Testing.Functions.Middle
             var middle = interval.Middle();
             var middleNumber = (interval.LowerBound + interval.UpperBound) * 0.5;
 
-            Assert.IsTrue(middle.Contains(middleNumber));
+            Assert.That(middle.Contains(middleNumber), Is.True);
         }
         
         [Test]
@@ -33,7 +33,7 @@ namespace IntervalClass.Net.Testing.Functions.Middle
             var error = ShouldCatchIntervalClassException(()
                 => Interval.Infinity.Middle());
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
@@ -42,7 +42,7 @@ namespace IntervalClass.Net.Testing.Functions.Middle
             var error = ShouldCatchIntervalClassException(()
                 => Interval.Empty.Middle());
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
 
         [Test]
@@ -51,7 +51,7 @@ namespace IntervalClass.Net.Testing.Functions.Middle
             var error = ShouldCatchIntervalClassException(()
                 => Interval.PositiveInfinity.Middle());
             
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
@@ -60,7 +60,7 @@ namespace IntervalClass.Net.Testing.Functions.Middle
             var error = ShouldCatchIntervalClassException(()
                 => Interval.NegativeInfinity.Middle());
             
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
     }
 }

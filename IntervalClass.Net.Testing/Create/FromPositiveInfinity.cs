@@ -15,7 +15,7 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(()
                 => new Interval(double.PositiveInfinity));
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
@@ -24,7 +24,7 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(()
                 => new Interval(double.PositiveInfinity, double.PositiveInfinity));
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
@@ -35,7 +35,7 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(()
                 => new Interval(double.PositiveInfinity, number));
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
@@ -45,7 +45,7 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(() 
                 => new Interval(double.PositiveInfinity, double.NaN));
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
         
         [Test]
@@ -55,7 +55,7 @@ namespace IntervalClass.Net.Testing.Create
             var error = ShouldCatchIntervalClassException(() 
                 => new Interval(double.PositiveInfinity, double.NegativeInfinity));
 
-            Assert.IsTrue(error);
+            Assert.That(error, Is.True);
         }
     }
 }

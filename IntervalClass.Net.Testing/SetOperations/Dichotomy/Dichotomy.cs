@@ -2,7 +2,6 @@
 // PVS-Studio Static Code Analyzer for C, C++, C#, and Java: http://www.viva64.com
 
 using NextAfter.Net;
-using NUnit.Framework;
 
 namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
 {

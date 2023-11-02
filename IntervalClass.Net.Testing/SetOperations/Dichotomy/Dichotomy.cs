@@ -19,11 +19,10 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
         [Test]
         public void Infinity_Success()
         {
-            var result = Interval.Infinity.Dichotomy();
-            
-            Assert.IsTrue(result.Length == 2);
-            Assert.IsTrue(result[0] == Interval.NegativeInfinity);
-            Assert.IsTrue(result[1] == Interval.PositiveInfinity);
+            var error = ShouldCatchIntervalClassException(()
+               => Interval.Infinity.Dichotomy());
+
+            Assert.IsTrue(error);
         }
         
         [Test]

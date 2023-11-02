@@ -30,5 +30,15 @@ namespace IntervalClass.Net.Testing.Functions.IsContainsAnyInteger
         {
             Assert.IsTrue(Interval.PositiveInfinity.IsContainsAnyInteger());
         }
+
+        [Test]
+        [Repeat(RepeatCount)]
+        public void IntegerNumber_Success()
+        {
+            var integer = GenerateIntNumber();
+            var interval = new Interval(integer);
+
+            Assert.IsTrue(interval.IsContainsAnyInteger());
+        }
     }
 }

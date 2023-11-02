@@ -76,9 +76,6 @@ namespace IntervalClass.Net
             if (IsEmpty)
                 throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
-            if (this == Infinity)
-                return (Interval)0.0;
-
             if (double.IsInfinity(LowerBound) || double.IsInfinity(UpperBound))
                 throw new IntervalClassException($"todo error exception message");
 

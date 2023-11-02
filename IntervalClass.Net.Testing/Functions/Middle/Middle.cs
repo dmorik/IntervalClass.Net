@@ -32,9 +32,10 @@ namespace IntervalClass.Net.Testing.Functions.Middle
         [Test]
         public void Infinity_Success()
         {
-            var middle = Interval.Infinity.Middle();
+            var error = ShouldCatchIntervalClassException(()
+                => Interval.Infinity.Middle());
 
-            Assert.IsTrue(middle.Contains(0.0));
+            Assert.IsTrue(error);
         }
         
         [Test]

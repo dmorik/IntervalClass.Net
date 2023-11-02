@@ -14,6 +14,8 @@ namespace IntervalClass.Net.Testing
         private static readonly Random Random = new Random(DateTime.Now.Millisecond);
         private static readonly double MinDoubleLogValue = Math.Log(double.Epsilon) + 1.0;
         private static readonly double MaxDoubleLogValue = Math.Log(double.MaxValue) - 1.0;
+        private static readonly double MinIntLogValue = Math.Log(1) + 1.0;
+        private static readonly double MaxIntLogValue = Math.Log(int.MaxValue) - 1.0;
 
         private static double GenerateNumberByLogInterval(double minLog, double maxLog)
         {
@@ -28,6 +30,11 @@ namespace IntervalClass.Net.Testing
         protected static double GenerateDoubleNumber()
         {
             return GenerateNumberByLogInterval(MinDoubleLogValue, MaxDoubleLogValue);
+        }
+
+        protected static int GenerateIntNumber()
+        {
+            return (int)GenerateNumberByLogInterval(MinIntLogValue, MaxIntLogValue);
         }
         
         protected static double[] GenerateDoubleNumbers(int count)

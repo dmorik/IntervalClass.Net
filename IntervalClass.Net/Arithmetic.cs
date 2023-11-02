@@ -16,7 +16,7 @@ namespace IntervalClass.Net
         public static Interval operator +(Interval interval)
         {
             if (interval.IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             return new Interval(interval.LowerBound, interval.UpperBound);
         }
@@ -29,7 +29,7 @@ namespace IntervalClass.Net
         public static Interval operator -(Interval interval)
         {
             if (interval.IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             return new Interval(-interval.UpperBound, -interval.LowerBound);
         }
@@ -43,10 +43,10 @@ namespace IntervalClass.Net
         public static Interval operator +(Interval firstInterval, Interval secondInterval)
         {
             if (firstInterval.IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             if (secondInterval.IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             var lowerBound = Previous.Double(firstInterval.LowerBound + secondInterval.LowerBound);
             var upperBound = Next.Double(firstInterval.UpperBound + secondInterval.UpperBound);
@@ -63,10 +63,10 @@ namespace IntervalClass.Net
         public static Interval operator -(Interval firstInterval, Interval secondInterval)
         {
             if (firstInterval.IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             if (secondInterval.IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             var lowerBound = Previous.Double(firstInterval.LowerBound - secondInterval.UpperBound);
             var upperBound = Next.Double(firstInterval.UpperBound - secondInterval.LowerBound);
@@ -83,10 +83,10 @@ namespace IntervalClass.Net
         public static Interval operator *(Interval firstInterval, Interval secondInterval)
         {
             if (firstInterval.IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             if (secondInterval.IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             var lowerLower = firstInterval.LowerBound * secondInterval.LowerBound;
             var lowerUpper = firstInterval.LowerBound * secondInterval.UpperBound;
@@ -108,10 +108,10 @@ namespace IntervalClass.Net
         public static Interval operator /(Interval firstInterval, Interval secondInterval)
         {
             if (firstInterval.IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             if (secondInterval.IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             if (secondInterval.Contains(0.0))
                 throw new IntervalClassException($"Division by an interval containing zero");

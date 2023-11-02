@@ -34,18 +34,18 @@ namespace IntervalClass.Net
         public Interval(double lowerBound, double upperBound)
         {
             if (double.IsNaN(lowerBound))
-                throw new IntervalClassException(ErrorMessagesFactory.LowerBoundIsNan(lowerBound, upperBound));
+                throw new IntervalClassException(ErrorMessages.LowerBoundIsNan(lowerBound, upperBound));
 
             if (double.IsNaN(upperBound))
-                throw new IntervalClassException(ErrorMessagesFactory.UpperBoundIsNan(lowerBound, upperBound));
+                throw new IntervalClassException(ErrorMessages.UpperBoundIsNan(lowerBound, upperBound));
 
             if (lowerBound > upperBound)
-                throw new IntervalClassException(ErrorMessagesFactory.UpperBoundLessThanLowerBound(lowerBound, upperBound));
+                throw new IntervalClassException(ErrorMessages.UpperBoundLessThanLowerBound(lowerBound, upperBound));
 
             if (double.IsNegativeInfinity(lowerBound) && double.IsNegativeInfinity(upperBound)
                 || double.IsPositiveInfinity(lowerBound) && double.IsPositiveInfinity(upperBound))
             {
-                throw new IntervalClassException(ErrorMessagesFactory.UpperBoundLessThanLowerBound(lowerBound, upperBound));
+                throw new IntervalClassException(ErrorMessages.UpperBoundLessThanLowerBound(lowerBound, upperBound));
             }
             
             InternalLowerBound = lowerBound;

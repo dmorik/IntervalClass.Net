@@ -42,7 +42,7 @@ namespace IntervalClass.Net
         public Interval Width()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             if (IsPoint())
                 return (Interval)0.0;
@@ -58,7 +58,7 @@ namespace IntervalClass.Net
         public Interval Radius()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             var width = Width();
             var radius = width / (Interval)2.0;
@@ -74,7 +74,7 @@ namespace IntervalClass.Net
         public Interval Middle()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             if (this == Infinity)
                 return (Interval)0.0;
@@ -96,7 +96,7 @@ namespace IntervalClass.Net
         public double Magnitude()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             return Math.Max(Math.Abs(LowerBound), Math.Abs(UpperBound));
         }
@@ -109,7 +109,7 @@ namespace IntervalClass.Net
         public double Mignitude()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             if (Contains(0.0))
                 return 0.0;

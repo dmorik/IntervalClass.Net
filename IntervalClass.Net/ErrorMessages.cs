@@ -3,7 +3,7 @@
 
 namespace IntervalClass.Net
 {
-    internal static class ErrorMessagesFactory
+    internal static class ErrorMessages
     {
         public static string ArgumentIsEmptyInterval
             => "Argument is the empty interval";

@@ -16,7 +16,7 @@ namespace IntervalClass.Net
         public Interval Abs()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             var lowerBound = Mignitude();
             var upperBound = Magnitude();
@@ -32,7 +32,7 @@ namespace IntervalClass.Net
         public Interval Sqr()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             var lowerBoundSqr = LowerBound * LowerBound;
             var upperBoundSqr = UpperBound * UpperBound;
@@ -52,7 +52,7 @@ namespace IntervalClass.Net
         public Interval Exp()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             var lowerBound = Previous.Double(Math.Exp(LowerBound));
             var upperBound = Next.Double(Math.Exp(UpperBound));
@@ -68,7 +68,7 @@ namespace IntervalClass.Net
         public Interval Sin()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             var leftSin = Math.Sin(LowerBound);
             var rightSin = Math.Sin(UpperBound);
@@ -92,7 +92,7 @@ namespace IntervalClass.Net
         public Interval Cos()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             return (this + Pi2).Sin();
         }
@@ -105,7 +105,7 @@ namespace IntervalClass.Net
         public Interval Tan()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             return Sin() / Cos();
         }
@@ -118,7 +118,7 @@ namespace IntervalClass.Net
         public Interval Sqrt()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
             
             if (LowerBound < 0.0)
                 throw new IntervalClassException($"Invalid argument for sqrt function");
@@ -141,7 +141,7 @@ namespace IntervalClass.Net
         public Interval Sign()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             if (UpperBound < 0.0)
                 return new Interval(-1.0);
@@ -166,7 +166,7 @@ namespace IntervalClass.Net
         public Interval ArcSin()
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             if (LowerBound < -1.0
                 || UpperBound > 1.0)
@@ -188,7 +188,7 @@ namespace IntervalClass.Net
         public Interval PowInt(int power)
         {
             if (IsEmpty)
-                throw new IntervalClassException(ErrorMessagesFactory.ArgumentIsEmptyInterval);
+                throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
             if (power < 0)
                 return (Interval)1.0 / PowInt(-power);

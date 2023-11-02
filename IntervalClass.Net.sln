@@ -5,7 +5,7 @@ VisualStudioVersion = 17.4.33110.190
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "IntervalClass.Net", "IntervalClass.Net\IntervalClass.Net.csproj", "{910CD7F3-1A29-4F99-8E5B-0F29214B9DD4}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntervalClass.Net.Testing", "IntervalClass.Net.Testing\IntervalClass.Net.Testing.csproj", "{3CCFD9FA-E77C-41B7-95AC-D9290388D328}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "IntervalClass.Net.Testing", "IntervalClass.Net.Testing\IntervalClass.Net.Testing.csproj", "{C1F88959-A8C4-4515-85F6-17B93FFB4955}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{910CD7F3-1A29-4F99-8E5B-0F29214B9DD4}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{910CD7F3-1A29-4F99-8E5B-0F29214B9DD4}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{910CD7F3-1A29-4F99-8E5B-0F29214B9DD4}.Release|Any CPU.Build.0 = Release|Any CPU
-		{3CCFD9FA-E77C-41B7-95AC-D9290388D328}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{3CCFD9FA-E77C-41B7-95AC-D9290388D328}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{3CCFD9FA-E77C-41B7-95AC-D9290388D328}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{3CCFD9FA-E77C-41B7-95AC-D9290388D328}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C1F88959-A8C4-4515-85F6-17B93FFB4955}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C1F88959-A8C4-4515-85F6-17B93FFB4955}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C1F88959-A8C4-4515-85F6-17B93FFB4955}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C1F88959-A8C4-4515-85F6-17B93FFB4955}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE

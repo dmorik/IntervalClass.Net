@@ -50,7 +50,8 @@ namespace IntervalClass.Net.Testing.Functions.Width
         [Repeat(RepeatCount)]
         public void Common_Success()
         {
-            var interval = Generate.Interval.Any();
+            // if width > double.maxvalue then error
+            var interval = Generate.Interval.Any() * (Interval)0.5;
             var width = interval.UpperBound - interval.LowerBound;
 
             Assert.That(interval.Width().Contains(width), Is.True);
@@ -61,6 +62,15 @@ namespace IntervalClass.Net.Testing.Functions.Width
         {
             var error = ShouldCatchIntervalClassException(()
                 => Interval.Empty.Width());
+
+            Assert.That(error, Is.True);
+        }
+
+        [Test]
+        public void MaxValue_Failure()
+        {
+            var error = ShouldCatchIntervalClassException(()
+                => new Interval(double.MinValue, double.MaxValue).Width());
 
             Assert.That(error, Is.True);
         }

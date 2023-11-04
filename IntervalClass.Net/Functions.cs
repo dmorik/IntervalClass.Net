@@ -60,9 +60,11 @@ namespace IntervalClass.Net
             if (IsEmpty)
                 throw new IntervalClassException(ErrorMessages.ArgumentIsEmptyInterval);
 
-            var width = Width();
-            var radius = width / (Interval)2.0;
-            
+            if (IsPoint())
+                return (Interval)0.0;
+
+            var radius = (Interval)UpperBound * (Interval)0.5 - (Interval)LowerBound * (Interval)0.5;
+
             return radius;
         }
 

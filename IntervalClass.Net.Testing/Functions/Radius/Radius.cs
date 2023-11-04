@@ -47,9 +47,9 @@ namespace IntervalClass.Net.Testing.Functions.Width
         public void Common_Success()
         {
             var interval = Generate.Interval.Any();
-            var width = (interval.UpperBound - interval.LowerBound) * 0.5;
+            var radius = (interval.UpperBound - interval.LowerBound) * 0.5;
 
-            Assert.That(interval.Radius().Contains(width), Is.True);
+            Assert.That(interval.Radius().Contains(radius), Is.True);
         }
 
         [Test]
@@ -59,6 +59,15 @@ namespace IntervalClass.Net.Testing.Functions.Width
                 => Interval.Empty.Radius());
 
             Assert.That(error, Is.True);
+        }
+
+        [Test]
+        public void MaxValue_Success()
+        {
+            var interval = new Interval(double.MinValue, double.MaxValue);
+            var radius = double.MaxValue;
+
+            Assert.That(interval.Radius().Contains(radius), Is.True);
         }
     }
 }

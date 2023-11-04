@@ -46,8 +46,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
         [Repeat(RepeatCount)]
         public void Point_Success()
         {
-            var number = GenerateDoubleNumber();
-            var interval = new Interval(number);
+            var interval = Generate.Interval.Point();
             var dichotomyResult = interval.Dichotomy();
             
             Assert.That(dichotomyResult, Has.Length.EqualTo(1));
@@ -58,7 +57,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
         [Repeat(RepeatCount)]
         public void Common_Success()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
             var dichotomyResult = interval.Dichotomy();           
             
             Assert.Multiple(() =>
@@ -74,7 +73,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Dichotomy
         [Repeat(RepeatCount)]
         public void TwoNeighboursDoubleInterval_Success()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
             var nextNumber = Next.Double(number);
             var interval = new Interval(number, nextNumber);
             var dichotomyResult = interval.Dichotomy();

@@ -79,7 +79,7 @@ namespace IntervalClass.Net
             if (double.IsInfinity(LowerBound) || double.IsInfinity(UpperBound))
                 throw new IntervalClassException($"todo error exception message");
 
-            var middle = ((Interval)LowerBound + (Interval)UpperBound) / (Interval)2.0;
+            var middle = (Interval)LowerBound * (Interval)0.5 + (Interval)UpperBound * (Interval)0.5;
             
             // intersects because middle must be into interval
             return middle.Intersect(this);
@@ -111,7 +111,7 @@ namespace IntervalClass.Net
             if (Contains(0.0))
                 return 0.0;
 
-            return Math.Min((sbyte)Math.Abs(LowerBound), (sbyte)Math.Abs(UpperBound));
+            return Math.Min(Math.Abs(LowerBound), Math.Abs(UpperBound));
         }
     }
 }

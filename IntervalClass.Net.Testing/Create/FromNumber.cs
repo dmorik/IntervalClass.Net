@@ -14,7 +14,7 @@ namespace IntervalClass.Net.Testing.Create
         [Repeat(RepeatCount)]
         public void Number_Success()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
             var createdInterval = new Interval(number);
             
             Assert.Multiple(() =>
@@ -29,7 +29,7 @@ namespace IntervalClass.Net.Testing.Create
         [Repeat(RepeatCount)]
         public void Number_Number_Ordered_Success()
         {
-            var orderedNumbers = GenerateDoubleNumbers(2)
+            var orderedNumbers = Generate.Number.Double.Any(2)
                 .OrderBy(x => x)
                 .ToArray();
             var lowerBound = orderedNumbers[0];
@@ -48,7 +48,7 @@ namespace IntervalClass.Net.Testing.Create
         [Repeat(RepeatCount)]
         public void Number_Number_ReverseOrdered_Failure()
         {
-            var numbers = GenerateDoubleNumbers(2);
+            var numbers = Generate.Number.Double.Any(2);
             var reverseOrderedNumbers = numbers
                 .OrderByDescending(x => x)
                 .ToArray();
@@ -62,7 +62,7 @@ namespace IntervalClass.Net.Testing.Create
         [Repeat(RepeatCount)]
         public void Number_NaN_Failure()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
             var error = ShouldCatchIntervalClassException(()
                 => new Interval(number, double.NaN));
 
@@ -73,7 +73,7 @@ namespace IntervalClass.Net.Testing.Create
         [Repeat(RepeatCount)]
         public void Number_PositiveInfinity_Success()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
             var createdInterval = new Interval(number, double.PositiveInfinity);
             
             Assert.Multiple(() =>
@@ -88,7 +88,7 @@ namespace IntervalClass.Net.Testing.Create
         [Repeat(RepeatCount)]
         public void Number_NegativeInfinity_Failure()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
             var error = ShouldCatchIntervalClassException(() 
                 => new Interval(number, double.NegativeInfinity));
 

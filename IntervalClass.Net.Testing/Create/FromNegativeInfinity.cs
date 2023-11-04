@@ -44,7 +44,7 @@ namespace IntervalClass.Net.Testing.Create
         [Repeat(RepeatCount)]
         public void NegativeInfinity_Number_Success()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
             var createdInterval = new Interval(double.NegativeInfinity, number);
             
             Assert.Multiple(() =>

@@ -9,8 +9,7 @@ namespace IntervalClass.Net.Testing.Functions.IsPoint
         [Repeat(RepeatCount)]
         public void Point_Success()
         {
-            var number = GenerateDoubleNumber();
-            var interval = (Interval)number;
+            var interval = Generate.Interval.Point();
             
             Assert.That(interval.IsPoint(), Is.True);
         }
@@ -43,7 +42,7 @@ namespace IntervalClass.Net.Testing.Functions.IsPoint
         [Repeat(RepeatCount)]
         public void Common_Failure()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
  
             Assert.That(interval.IsPoint(), Is.False);
         }

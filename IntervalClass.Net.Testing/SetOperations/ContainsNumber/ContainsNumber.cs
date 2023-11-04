@@ -11,19 +11,17 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         [Repeat(RepeatCount)]
         public void Point_Success()
         {
-            var number = GenerateDoubleNumber();
-            var interval = (Interval)number;
+            var interval = Generate.Interval.Point();
             
-            Assert.That(interval.Contains(number), Is.True);
+            Assert.That(interval.Contains(interval.LowerBound), Is.True);
         }
         
         [Test]
         [Repeat(RepeatCount)]
         public void Point_Failure()
-        {
-            var number = GenerateDoubleNumber();
-            var interval = (Interval)number;
-            var anotherNumber = GenerateDoubleNumber();
+        {            
+            var interval = Generate.Interval.Point();
+            var anotherNumber = Generate.Number.Double.Any();
             
             Assert.That(interval.Contains(anotherNumber), Is.False);
         }
@@ -32,7 +30,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         [Repeat(RepeatCount)]
         public void Common_Success()
         {
-            var numbers = GenerateDoubleNumbers(3)
+            var numbers = Generate.Number.Double.Any(3)
                 .OrderBy(x => x)
                 .ToArray();
             var interval = new Interval(numbers[0], numbers[2]);
@@ -45,7 +43,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         [Repeat(RepeatCount)]
         public void Common_Failure()
         {
-            var numbers = GenerateDoubleNumbers(3)
+            var numbers = Generate.Number.Double.Any(3)
                 .OrderBy(x => x)
                 .ToArray();
             var interval = new Interval(numbers[0], numbers[1]);
@@ -58,7 +56,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         [Repeat(RepeatCount)]
         public void Empty_Failure()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
             
             Assert.That(Interval.Empty.Contains(number), Is.False);
         }
@@ -67,7 +65,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         [Repeat(RepeatCount)]
         public void Infinity_Success()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
             
             Assert.That(Interval.Infinity.Contains(number), Is.True);
         }
@@ -76,7 +74,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         [Repeat(RepeatCount)]
         public void PositiveInfinity_Success()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
 
             if (number < 0.0)
                 number = -number;
@@ -88,7 +86,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         [Repeat(RepeatCount)]
         public void PositiveInfinity_Failure()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
 
             if (number > 0.0)
                 number = -number;
@@ -100,7 +98,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         [Repeat(RepeatCount)]
         public void NegativeInfinity_Success()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
 
             if (number > 0.0)
                 number = -number;
@@ -112,7 +110,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsNumber
         [Repeat(RepeatCount)]
         public void NegativeInfinity_Failure()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
 
             if (number < 0.0)
                 number = -number;

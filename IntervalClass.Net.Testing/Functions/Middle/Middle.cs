@@ -9,8 +9,7 @@ namespace IntervalClass.Net.Testing.Functions.Middle
         [Repeat(RepeatCount)]
         public void Point_Success()
         {
-            var number = GenerateDoubleNumber();
-            var interval = (Interval)number;
+            var interval = Generate.Interval.Point();
             var middle = interval.Middle();
             
             Assert.That(middle, Is.EqualTo(interval));
@@ -20,9 +19,9 @@ namespace IntervalClass.Net.Testing.Functions.Middle
         [Repeat(RepeatCount)]
         public void Common_Success()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
             var middle = interval.Middle();
-            var middleNumber = (interval.LowerBound + interval.UpperBound) * 0.5;
+            var middleNumber = interval.LowerBound * 0.5 + interval.UpperBound * 0.5;
 
             Assert.That(middle.Contains(middleNumber), Is.True);
         }

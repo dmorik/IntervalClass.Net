@@ -9,8 +9,7 @@ namespace IntervalClass.Net.Testing.Functions.Width
         [Repeat(RepeatCount)]
         public void Point_Success()
         {
-            var number = GenerateDoubleNumber();
-            var interval = (Interval)number;
+            var interval = Generate.Interval.Point();
             var width = interval.Width();
 
             Assert.Multiple(() =>
@@ -51,7 +50,7 @@ namespace IntervalClass.Net.Testing.Functions.Width
         [Repeat(RepeatCount)]
         public void Common_Success()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
             var width = interval.UpperBound - interval.LowerBound;
 
             Assert.That(interval.Width().Contains(width), Is.True);

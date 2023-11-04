@@ -12,7 +12,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Common_OneSharedPointCommon()
         {
-            var orderedNumbers = GenerateDoubleNumbers(3)
+            var orderedNumbers = Generate.Number.Double.Any(3)
                 .OrderBy(x => x)
                 .ToArray();
 
@@ -40,7 +40,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Common_NotIntersectingCommon()
         {
-            var orderedNumbers = GenerateDoubleNumbers(4)
+            var orderedNumbers = Generate.Number.Double.Any(4)
                 .OrderBy(x => x)
                 .ToArray();
 
@@ -60,7 +60,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Common_ContainingCommon()
         {
-            var orderedNumbers = GenerateDoubleNumbers(4)
+            var orderedNumbers = Generate.Number.Double.Any(4)
                 .OrderBy(x => x)
                 .ToArray();
 
@@ -80,7 +80,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Common_SameCommon()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
             var intersection = interval.Intersect(interval);
             
             Assert.That(intersection, Is.EqualTo(interval));
@@ -90,7 +90,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Common_IntersectingCommon()
         {
-            var orderedNumbers = GenerateDoubleNumbers(4)
+            var orderedNumbers = Generate.Number.Double.Any(4)
                 .OrderBy(x => x)
                 .ToArray();
 
@@ -110,7 +110,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Common_Empty()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
             var intersection = interval.Intersect(Interval.Empty);
             
             Assert.That(intersection, Is.EqualTo(Interval.Empty));
@@ -120,7 +120,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Common_Infinity()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
             var intersection = interval.Intersect(Interval.Infinity);
             
             Assert.That(intersection, Is.EqualTo(interval));
@@ -130,7 +130,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Common_NegativeInfinity()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
             var intersection = interval.Intersect(Interval.NegativeInfinity);
             var shouldIntersection = interval > 0.0
                 ? Interval.Empty
@@ -143,7 +143,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Common_PositiveInfinity()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
             var intersection = interval.Intersect(Interval.PositiveInfinity);
             var shouldIntersection = interval < 0.0
                 ? Interval.Empty

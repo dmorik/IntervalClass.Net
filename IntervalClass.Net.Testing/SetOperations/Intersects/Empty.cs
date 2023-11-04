@@ -26,7 +26,7 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
         [Repeat(RepeatCount)]
         public void Empty_Common()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
             var intersection = Interval.Empty.Intersect(interval);
             
             Assert.That(intersection, Is.EqualTo(Interval.Empty));

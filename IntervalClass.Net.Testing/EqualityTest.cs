@@ -10,36 +10,14 @@ namespace IntervalClass.Net.Testing
     internal sealed class EqualityTest : TestBase
     {
         private static void TestEqualIntervals(Interval firstInterval, Interval secondInterval)
-        {
-            Assert.That(firstInterval, Is.EqualTo(firstInterval));
+        {            
             Assert.Multiple(() =>
             {
-                Assert.That(firstInterval, Is.EqualTo(secondInterval));
-                Assert.That(secondInterval, Is.EqualTo(firstInterval));
-            });
-            Assert.Multiple(() =>
-            {
-                Assert.That(secondInterval, Is.EqualTo(secondInterval));
-
                 Assert.That(firstInterval, Is.EqualTo(firstInterval));
-            });
-            Assert.Multiple(() =>
-            {
                 Assert.That(firstInterval, Is.EqualTo(secondInterval));
                 Assert.That(secondInterval, Is.EqualTo(firstInterval));
-            });
-            Assert.Multiple(() =>
-            {
                 Assert.That(secondInterval, Is.EqualTo(secondInterval));
-
-                Assert.That(firstInterval, Is.EqualTo(firstInterval));
             });
-            Assert.Multiple(() =>
-            {
-                Assert.That(firstInterval, Is.EqualTo(secondInterval));
-                Assert.That(secondInterval, Is.EqualTo(firstInterval));
-            });
-            Assert.That(secondInterval, Is.EqualTo(secondInterval));
         }
 
         [Test]
@@ -82,7 +60,7 @@ namespace IntervalClass.Net.Testing
         [Repeat(RepeatCount)]
         public void Common_Equals_SameCommon()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
             var anotherInterval = new Interval(interval.LowerBound, interval.UpperBound);
             
             TestEqualIntervals(interval, anotherInterval);
@@ -92,8 +70,7 @@ namespace IntervalClass.Net.Testing
         [Repeat(RepeatCount)]
         public void Point_Equals_SamePoint()
         {
-            var number = GenerateDoubleNumber();
-            var interval = new Interval(number);
+            var interval = Generate.Interval.Point();
             var anotherInterval = new Interval(interval.LowerBound, interval.UpperBound);
             
             TestEqualIntervals(interval, anotherInterval);

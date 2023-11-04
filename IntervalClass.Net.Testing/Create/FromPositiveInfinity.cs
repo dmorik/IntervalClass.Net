@@ -31,7 +31,7 @@ namespace IntervalClass.Net.Testing.Create
         [Repeat(RepeatCount)]
         public void PositiveInfinity_Number_Failure()
         {
-            var number = GenerateDoubleNumber();
+            var number = Generate.Number.Double.Any();
             var error = ShouldCatchIntervalClassException(()
                 => new Interval(double.PositiveInfinity, number));
 

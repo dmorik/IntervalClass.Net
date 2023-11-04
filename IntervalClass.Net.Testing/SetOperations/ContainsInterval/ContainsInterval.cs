@@ -11,8 +11,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
         [Repeat(RepeatCount)]
         public void Point_Success()
         {
-            var number = GenerateDoubleNumber();
-            var interval = (Interval)number;
+            var interval = Generate.Interval.Point();
             
             Assert.That(interval.Contains(interval), Is.True);
         }
@@ -21,11 +20,9 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
         [Repeat(RepeatCount)]
         public void Point_Failure()
         {
-            var number = GenerateDoubleNumber();
-            var interval = (Interval)number;
-            var anotherNumber = GenerateDoubleNumber();
-            var anotherInterval = (Interval)anotherNumber;
-            
+            var interval = Generate.Interval.Point();
+            var anotherInterval = Generate.Interval.Point();
+
             Assert.That(interval.Contains(anotherInterval), Is.False);
         }
 
@@ -33,7 +30,7 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
         [Repeat(RepeatCount)]
         public void Common_Success()
         {
-            var numbers = GenerateDoubleNumbers(4)
+            var numbers = Generate.Number.Double.Any(4)
                 .OrderBy(x => x)
                 .ToArray();
             var outerInterval = new Interval(numbers[0], numbers[3]);
@@ -46,11 +43,12 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
         [Repeat(RepeatCount)]
         public void Common_Failure()
         {
-            var numbers = GenerateDoubleNumbers(4)
+            var numbers = Generate.Number.Double.Any(4)
                 .OrderBy(x => x)
                 .ToArray();
             var interval = new Interval(numbers[0], numbers[2]);
             var anotherInterval = new Interval(numbers[1], numbers[3]);
+
             Assert.Multiple(() =>
             {
                 Assert.That(interval.Contains(anotherInterval), Is.False);
@@ -62,7 +60,8 @@ namespace IntervalClass.Net.Testing.SetOperations.ContainsInterval
         [Repeat(RepeatCount)]
         public void Empty_Failure()
         {
-            var interval = GenerateInterval();
+            var interval = Generate.Interval.Any();
+
             Assert.Multiple(() =>
             {
                 Assert.That(interval.Contains(Interval.Empty), Is.False);

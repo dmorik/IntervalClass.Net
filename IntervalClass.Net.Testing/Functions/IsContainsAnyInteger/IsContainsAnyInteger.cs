@@ -33,7 +33,7 @@ namespace IntervalClass.Net.Testing.Functions.IsContainsAnyInteger
         [Repeat(RepeatCount)]
         public void IntegerNumber_Success()
         {
-            var integer = GenerateIntNumber();
+            var integer = Generate.Number.Int.Any();
             var interval = new Interval(integer);
 
             Assert.That(interval.IsContainsAnyInteger(), Is.True);

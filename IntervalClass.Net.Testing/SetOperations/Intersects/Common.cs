@@ -124,32 +124,66 @@ namespace IntervalClass.Net.Testing.SetOperations.Intersects
             var intersection = interval.Intersect(Interval.Infinity);
             
             Assert.That(intersection, Is.EqualTo(interval));
-        }
-        
+        }       
+
         [Test]
         [Repeat(RepeatCount)]
-        public void Common_NegativeInfinity()
+        public void Negative_NegativeInfinity()
         {
-            var interval = Generate.Interval.Any();
+            var interval = Generate.Interval.Negative();
             var intersection = interval.Intersect(Interval.NegativeInfinity);
-            var shouldIntersection = interval > 0.0
-                ? Interval.Empty
-                : new Interval(interval.LowerBound, interval.UpperBound > 0.0 ? 0.0 : interval.UpperBound);
-            
-            Assert.That(intersection, Is.EqualTo(shouldIntersection));
+
+            Assert.That(intersection, Is.EqualTo(interval));
         }
-        
+
         [Test]
         [Repeat(RepeatCount)]
-        public void Common_PositiveInfinity()
+        public void Positive_NegativeInfinity()
         {
-            var interval = Generate.Interval.Any();
+            var interval = Generate.Interval.Positive();
+            var intersection = interval.Intersect(Interval.NegativeInfinity);
+
+            Assert.That(intersection, Is.EqualTo(Interval.Empty));
+        }
+
+        [Test]
+        [Repeat(RepeatCount)]
+        public void ZeroContained_NegativeInfinity()
+        {
+            var interval = Generate.Interval.WithZero();
+            var intersection = interval.Intersect(Interval.NegativeInfinity);
+
+            Assert.That(intersection, Is.EqualTo(new Interval(interval.LowerBound, 0.0)));
+        }
+
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Positive_PositiveInfinity()
+        {
+            var interval = Generate.Interval.Positive();
             var intersection = interval.Intersect(Interval.PositiveInfinity);
-            var shouldIntersection = interval < 0.0
-                ? Interval.Empty
-                : new Interval(interval.LowerBound < 0.0 ? 0.0 : interval.LowerBound, interval.UpperBound);
             
-            Assert.That(intersection, Is.EqualTo(shouldIntersection));
+            Assert.That(intersection, Is.EqualTo(interval));
+        }
+
+        [Test]
+        [Repeat(RepeatCount)]
+        public void Negative_PositiveInfinity()
+        {
+            var interval = Generate.Interval.Negative();
+            var intersection = interval.Intersect(Interval.PositiveInfinity);
+
+            Assert.That(intersection, Is.EqualTo(Interval.Empty));
+        }
+
+        [Test]
+        [Repeat(RepeatCount)]
+        public void ZeroContained_PositiveInfinity()
+        {
+            var interval = Generate.Interval.WithZero();
+            var intersection = interval.Intersect(Interval.PositiveInfinity);
+
+            Assert.That(intersection, Is.EqualTo(new Interval(0.0, interval.UpperBound)));
         }
     }
 }
